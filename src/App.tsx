@@ -1,471 +1,662 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useRef, useState } from "react";
 
-/* ── Data ── */
+const categories = [
+  "All solutions",
+  "Learning",
+  "Clinical practice",
+  "Research",
+  "Intelligence",
+] as const;
+type Category = (typeof categories)[number];
+const products: {
+  name: string;
+  category: Category;
+  label: string;
+  description: string;
+  features: string[];
+  url: string;
+  cta: string;
+  number: string;
+  logo: string;
+}[] = [
+  {
+    name: "Bayan",
+    category: "Learning",
+    label: "Medical education & exam preparation",
+    description:
+      "A learning space for students, doctors, nurses, and pharmacists. Build clinical reasoning with question practice, explanations, and focused revision.",
+    features: [
+      "Adaptive question sessions",
+      "Board & licensing exam preparation",
+      "Flashcards, OSCE & virtual patients",
+    ],
+    url: "https://www.bayan.edu.om",
+    cta: "Explore Bayan",
+    number: "01",
+    logo: "/brand/bayan.png",
+  },
+  {
+    name: "PreOp",
+    category: "Clinical practice",
+    label: "Perioperative medicine toolkit",
+    description:
+      "Bring risk assessment, medication references, and perioperative planning into one practical workflow for healthcare professionals.",
+    features: [
+      "Clinical risk calculators",
+      "Medication & investigation references",
+      "Assessment and handoff tools",
+    ],
+    url: "https://www.bayan.edu.om/preop",
+    cta: "Explore PreOp",
+    number: "02",
+    logo: "/brand/preop.png",
+  },
+  {
+    name: "JournalReady",
+    category: "Research",
+    label: "From research idea to submission",
+    description:
+      "Support the work around your research: study planning, statistical interpretation, manuscript preparation, and journal selection.",
+    features: [
+      "Study design & analysis tools",
+      "Manuscript and reference support",
+      "Journal selection & submission",
+    ],
+    url: "https://journalready.ai",
+    cta: "Explore JournalReady",
+    number: "03",
+    logo: "/brand/journalready.png",
+  },
+  {
+    name: "SmartRota",
+    category: "Clinical practice",
+    label: "Residency rotation planning",
+    description:
+      "Organize rotations around training requirements, hospital sites, and scheduling constraints.",
+    features: [
+      "Rotation planning",
+      "Training requirements",
+      "Multiple hospital sites",
+    ],
+    url: "https://rota.medresearch-academy.om",
+    cta: "Sign in to SmartRota",
+    number: "04",
+    logo: "/brand/smartrota.png",
+  },
+  {
+    name: "OHealth",
+    category: "Intelligence",
+    label: "Health data for better questions",
+    description:
+      "Explore health-system data, capacity, and trends to support analysis and planning in Oman.",
+    features: [
+      "Health-system indicators",
+      "Capacity & trend exploration",
+      "National open data",
+    ],
+    url: "https://ohealth.medresearch-academy.om",
+    cta: "Explore OHealth",
+    number: "05",
+    logo: "/brand/ohealth.png",
+  },
+  {
+    name: "OLearn",
+    category: "Intelligence",
+    label: "Education data in context",
+    description:
+      "Explore education trends, geographic patterns, and workforce indicators to inform planning and research.",
+    features: [
+      "Education trends",
+      "Geographic insights",
+      "Workforce indicators",
+    ],
+    url: "https://olearn-sandy.vercel.app",
+    cta: "Explore OLearn",
+    number: "06",
+    logo: "/brand/olearn.svg",
+  },
+];
+const faqs = [
+  [
+    "What is the difference between Bayan AI and Bayan?",
+    "Bayan AI Technologies brings clinical knowledge, research, and software development together. Bayan, at bayan.edu.om, is our medical education solution. Our wider work explores clinical language, perioperative practice, research methods, scheduling, and open data.",
+  ],
+  [
+    "What scientific questions connect the solutions?",
+    "Our work explores how people develop clinical reasoning, how Arabic clinical conversations can become structured documentation, and how evidence and data can support research and planning. Each solution addresses a different part of that work.",
+  ],
+  [
+    "Is Medad available for routine clinical deployment?",
+    "Medad is an active research and development project for Arabic clinical documentation. Research progress and readiness for routine clinical use are different milestones. We welcome discussion of evaluation methods, clinical language, and research collaboration.",
+  ],
+  [
+    "How can a university or hospital work with Bayan AI?",
+    "Start with a research question or a clinical or educational challenge. We welcome discussions about collaborative evaluation, study design, regional language needs, and the responsible application of technology in healthcare.",
+  ],
+  [
+    "How should I interpret the research and solution descriptions?",
+    "The descriptions explain areas of work and intended uses; they do not establish clinical efficacy. Research findings should be considered alongside their methods, evaluation setting, and limitations. Visit the relevant project for more detail, or contact us about a specific scientific question.",
+  ],
+];
 
-type Product = {
-  name: string
-  arabic?: string
-  tag: string
-  desc: string
-  metrics: [string, string][]
-  tech: string[]
-  url: string
-  accent: string
-  logo?: string
-  featured?: boolean
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
 }
-
-const products: Product[] = [
-  {
-    name: 'Bayan', arabic: 'بيان', tag: 'Adaptive Medical Education',
-    desc: 'ML-driven board exam prep with spaced repetition, psychometric analysis, multi-model AI verification (Claude + GPT-4o + Gemini), virtual patients, and OSCE stations.',
-    metrics: [['3,550+','Questions'],['11','Courses'],['192','Drugs'],['10+','Board Exams']],
-    tech: ['Adaptive ML','Multi-model QA','Psychometrics','PubMed API'],
-    url: 'https://www.bayan.edu.om', accent: '#7de2d1', logo: '/logos/bayan.png', featured: true,
-  },
-  {
-    name: 'Medad', arabic: 'مداد', tag: 'Ambient Clinical Documentation',
-    desc: 'On-premise AI that listens to Arabic doctor-patient conversations, generates structured SOAP notes with ICD-10 codes. Zero patient data leaves the hospital.',
-    metrics: [['52','Annotators'],['5','Institutions'],['100%','On-Premise']],
-    tech: ['Whisper ASR','Arabic NLP','SOAP Generation','ICD-10'],
-    url: 'https://www.medad.om', accent: '#70b8ff',
-  },
-  {
-    name: 'JournalReady', tag: 'AI Research Workflow',
-    desc: 'Research lifecycle platform: study design through statistical analysis to manuscript formatting for 800+ journal styles.',
-    metrics: [['23','AI Tools'],['6','Stages'],['800+','Journals']],
-    tech: ['Biostatistics','Reference Validation','Journal Matching'],
-    url: 'https://journal-ready.vercel.app', accent: '#b696ff',
-  },
-  {
-    name: 'SmartRota', tag: 'Scheduling Optimization',
-    desc: 'Constraint optimization for residency rotation scheduling across multiple hospital sites — weeks of planning reduced to minutes.',
-    metrics: [['119','Residents'],['3','Hospitals'],['13','Blocks/yr']],
-    tech: ['Constraint Solving','Curriculum Rules','Multi-site'],
-    url: 'https://rota.medresearch-academy.om', accent: '#7ddf92',
-  },
-  {
-    name: 'OHealth', tag: 'Health Intelligence',
-    desc: 'Predictive analytics for hospital capacity, disease trends with climate correlation, and equity analysis across all 11 governorates.',
-    metrics: [['98','Hospitals'],['9,706','Beds'],['27','Diseases']],
-    tech: ['Forecasting','Climate Analysis','Open Data'],
-    url: 'https://ohealth.medresearch-academy.om', accent: '#48d2bd',
-  },
-  {
-    name: 'OLearn', tag: 'Education Intelligence',
-    desc: 'Education planning platform: enrollment trends, school mapping, workforce Omanization, and research output benchmarking.',
-    metrics: [['1,270','Schools'],['26yr','Data Span'],['11','Governorates']],
-    tech: ['Geospatial','Trend Modelling','Open Data'],
-    url: 'https://olearn-sandy.vercel.app', accent: '#9cb0ff',
-  },
-]
-
-const omanPolygons: [number, number][][] = [
-  [[55.208341,22.70833],[55.234489,23.110993],[55.525841,23.524869],[55.528632,23.933604],[55.981214,24.130543],[55.804119,24.269604],[55.886233,24.920831],[56.396847,24.924732],[56.84514,24.241673],[57.403453,23.878594],[58.136948,23.747931],[58.729211,23.565668],[59.180502,22.992395],[59.450098,22.660271],[59.80806,22.533612],[59.806148,22.310525],[59.442191,21.714541],[59.282408,21.433886],[58.861141,21.114035],[58.487986,20.428986],[58.034318,20.481437],[57.826373,20.243002],[57.665762,19.736005],[57.7887,19.06757],[57.694391,18.94471],[57.234264,18.947991],[56.609651,18.574267],[56.512189,18.087113],[56.283521,17.876067],[55.661492,17.884128],[55.269939,17.632309],[55.2749,17.228354],[54.791002,16.950697],[54.239253,17.044981],[53.570508,16.707663],[53.108573,16.651051],[52.782184,17.349742],[52.00001,19.000003],[54.999982,19.999994],[55.666659,22.000001],[55.208341,22.70833]],
-  [[56.261042,25.714606],[56.070821,26.055464],[56.362017,26.395934],[56.485679,26.309118],[56.391421,25.895991],[56.261042,25.714606]],
-]
-
-const awards = [
-  ['2026','Ejada Institutional Innovation Award — Bayan Platform'],
-  ['2025','Best Paper — Delirium Prediction via Machine Learning'],
-  ['2024','National Research Award — Best Published Health Research'],
-  ['2023','National Research Award — Best Published Health Research'],
-]
-
-/* ── Neural Network Canvas ── */
-function NeuralCanvas() {
-  const ref = useRef<HTMLCanvasElement>(null)
-  useEffect(() => {
-    const canvas = ref.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-    let id: number
-    const nodes: { x: number; y: number; vx: number; vy: number; r: number }[] = []
-
-    function resize() { canvas!.width = window.innerWidth; canvas!.height = window.innerHeight }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const count = Math.min(60, Math.floor(window.innerWidth / 22))
-    for (let i = 0; i < count; i++) {
-      nodes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, r: Math.random() * 1.5 + 0.5 })
-    }
-
-    function draw() {
-      ctx!.clearRect(0, 0, canvas!.width, canvas!.height)
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 140) {
-            ctx!.beginPath(); ctx!.moveTo(nodes[i].x, nodes[i].y); ctx!.lineTo(nodes[j].x, nodes[j].y)
-            ctx!.strokeStyle = `rgba(125, 226, 209, ${(1 - dist / 140) * 0.12})`
-            ctx!.lineWidth = 0.5; ctx!.stroke()
-          }
-        }
-      }
-      for (const n of nodes) {
-        ctx!.beginPath(); ctx!.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-        ctx!.fillStyle = 'rgba(125, 226, 209, 0.35)'; ctx!.fill()
-        n.x += n.vx; n.y += n.vy
-        if (n.x < 0 || n.x > canvas!.width) n.vx *= -1
-        if (n.y < 0 || n.y > canvas!.height) n.vy *= -1
-      }
-      id = requestAnimationFrame(draw)
-    }
-    draw()
-    return () => { cancelAnimationFrame(id); window.removeEventListener('resize', resize) }
-  }, [])
-  return <canvas ref={ref} className="neural-canvas" />
-}
-
-/* ── Typing Effect ── */
-function TypedText({ words }: { words: string[] }) {
-  const [idx, setIdx] = useState(0)
-  const [text, setText] = useState('')
-  const [del, setDel] = useState(false)
-
-  useEffect(() => {
-    const word = words[idx]
-    const t = setTimeout(() => {
-      if (!del) {
-        setText(word.slice(0, text.length + 1))
-        if (text.length + 1 === word.length) setTimeout(() => setDel(true), 2200)
-      } else {
-        setText(word.slice(0, text.length - 1))
-        if (text.length === 0) { setDel(false); setIdx(i => (i + 1) % words.length) }
-      }
-    }, del ? 35 : 70)
-    return () => clearTimeout(t)
-  }, [text, del, idx, words])
-
-  return <span className="typed">{text}<span className="cursor">|</span></span>
-}
-
-/* ── Brand Mark (Circle Pulse) ── */
-function BrandMark({ compact }: { compact?: boolean }) {
-  return (
-    <svg className={compact ? 'brand-mark compact' : 'brand-mark'} viewBox="0 0 512 512">
-      <defs>
-        <linearGradient id="bs" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#1e3a5f" /><stop offset="1" stopColor="#0b1c2d" />
-        </linearGradient>
-        <linearGradient id="bl" x1="160" y1="140" x2="360" y2="380" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#99f6e4" /><stop offset="1" stopColor="#0d9488" />
-        </linearGradient>
-      </defs>
-      <circle cx="256" cy="256" r="240" fill="url(#bs)" />
-      <circle cx="256" cy="256" r="200" fill="none" stroke="#0d9488" strokeWidth="1.5" opacity="0.15" />
-      <circle cx="256" cy="256" r="160" fill="none" stroke="#0d9488" strokeWidth="1.5" opacity="0.1" />
-      <polyline points="80,256 180,256 210,180 240,340 270,200 300,256 420,256" fill="none" stroke="#0d9488" strokeWidth="4" opacity="0.2" strokeLinecap="round" strokeLinejoin="round" />
-      <text x="256" y="310" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="800" fontSize="200" fill="url(#bl)">B</text>
-      <circle cx="380" cy="160" r="14" fill="#f4b866" />
-    </svg>
-  )
-}
-
-/* ── Oman Map (from Codex — real coordinates) ── */
-function OmanMap() {
-  const minLon = 52, maxLon = 59.81, minLat = 16.65, maxLat = 26.4
-  const w = 400, h = 480, px = 40, py = 30
-  const proj = (lon: number, lat: number) => ({
-    x: px + ((lon - minLon) / (maxLon - minLon)) * (w - px * 2),
-    y: h - py - ((lat - minLat) / (maxLat - minLat)) * (h - py * 2),
-  })
-  const toPath = (poly: [number, number][]) =>
-    poly.map(([lon, lat], i) => { const p = proj(lon, lat); return `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)} ${p.y.toFixed(1)}` }).join(' ') + ' Z'
-
-  const muscat = proj(58.41, 23.59)
-
-  return (
-    <svg viewBox={`0 0 ${w} ${h}`} className="oman-svg">
-      <defs>
-        <linearGradient id="of" x1="100" y1="100" x2="300" y2="400" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#86ecdb" /><stop offset="1" stopColor="#327f93" />
-        </linearGradient>
-        <filter id="os"><feDropShadow dx="0" dy="12" stdDeviation="14" floodColor="#020810" floodOpacity="0.3" /></filter>
-      </defs>
-      {omanPolygons.map((poly, i) => (
-        <path key={i} d={toPath(poly)} fill="url(#of)" stroke="rgba(245,248,251,0.6)" strokeWidth="2" filter="url(#os)" />
-      ))}
-      {/* Muscat marker */}
-      <circle cx={muscat.x} cy={muscat.y} r="8" fill="rgba(244,184,102,0.2)">
-        <animate attributeName="r" values="8;14;8" dur="3s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite" />
-      </circle>
-      <circle cx={muscat.x} cy={muscat.y} r="5" fill="#f4b866" stroke="white" strokeWidth="2" />
-      <text x={muscat.x + 14} y={muscat.y + 5} fill="var(--heading)" fontSize="14" fontWeight="700" fontFamily="var(--font-display)">Muscat</text>
-      <text x={muscat.x + 14} y={muscat.y + 22} fill="var(--text-muted)" fontSize="13" fontFamily="var(--font-ar)">مسقط</text>
-      {/* Title */}
-      <text x="20" y="36" fill="var(--heading)" fontSize="15" fontWeight="700" fontFamily="var(--font-display)">Sultanate of Oman</text>
-      <text x="20" y="56" fill="var(--text-muted)" fontSize="16" fontFamily="var(--font-ar)">سلطنة عُمان</text>
-    </svg>
-  )
-}
-
-/* ── App ── */
-export default function App() {
-  const [scrolled, setScrolled] = useState(false)
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20)
-    fn(); window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
-  }, [])
-
+function Brand() {
   return (
     <>
-      {/* ── Nav ── */}
-      <header className={`site-nav ${scrolled ? 'scrolled' : ''}`}>
+      <img
+        className="company-logo"
+        src="/brand/bayan-ai.png"
+        width="76"
+        height="76"
+        alt="Bayan AI Technologies logo"
+      />
+      <span className="brand-copy">
+        <span className="brand-name">Bayan AI</span>
+        <span className="brand-sub">SCIENCE & INNOVATION</span>
+      </span>
+    </>
+  );
+}
+
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [category, setCategory] = useState<Category>("All solutions");
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const filtered = products.filter(
+    (p) => category === "All solutions" || p.category === category,
+  );
+  return (
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <header className="site-nav">
         <div className="container nav-row">
-          <a href="#top" className="brand-lockup">
-            <BrandMark compact />
-            <div className="brand-copy">
-              <span className="brand-title">Bayan AI Technologies</span>
-              <span className="brand-sub">Healthcare AI from Oman</span>
-            </div>
+          <a
+            href="#top"
+            className="brand"
+            aria-label="Bayan AI Technologies home"
+          >
+            <Brand />
           </a>
-          <nav className="nav-links">
-            <a href="#products">Products</a>
-            <a href="#oman">Oman</a>
-            <a href="#founder">Founder</a>
-            <a href="#contact" className="nav-cta">Contact</a>
+          <button
+            ref={menuButton}
+            className="menu-toggle"
+            aria-expanded={menuOpen}
+            aria-controls="main-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? "Close" : "Menu"}{" "}
+            <span aria-hidden="true">{menuOpen ? "×" : "+"}</span>
+          </button>
+          <nav
+            id="main-navigation"
+            aria-label="Main navigation"
+            className={menuOpen ? "nav-links is-open" : "nav-links"}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                setMenuOpen(false);
+                menuButton.current?.focus();
+              }
+            }}
+          >
+            {[
+              ["Solutions", "#products"],
+              ["Research", "#research"],
+              ["Approach", "#approach"],
+              ["About", "#about"],
+            ].map(([label, href]) => (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+                {label}
+              </a>
+            ))}
+            <a
+              className="nav-cta"
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+            >
+              Collaborate <Arrow />
+            </a>
           </nav>
         </div>
       </header>
-
-      <main>
-        {/* ── Hero ── */}
-        <section className="hero" id="top">
-          <NeuralCanvas />
-          <div className="hero-orb orb-1"></div>
-          <div className="hero-orb orb-2"></div>
+      <main id="main">
+        <section className="hero" id="top" aria-labelledby="hero-title">
+          <img
+            className="hero-art"
+            src="/artwork/ai-oman.jpg"
+            width="1391"
+            height="1131"
+            alt=""
+            fetchPriority="high"
+          />
           <div className="container hero-inner">
-            <p className="eyebrow">AI Infrastructure for Healthcare</p>
-            <h1 className="hero-title">
-              AI That Transforms<br />
-              <TypedText words={['Patient Care', 'Medical Education', 'Clinical Training', 'Health Systems', 'Medical Research']} />
-            </h1>
-            <p className="hero-body">
-              Six live platforms born in Oman, built to compete globally — from
-              adaptive learning to ambient documentation to predictive health
-              intelligence.
+            <div className="hero-copy">
+              <p className="eyebrow">
+                <span className="small-line" /> SCIENCE & INNOVATION FROM OMAN
+              </p>
+              <h1 id="hero-title">
+                Scientific curiosity.
+                <br />
+                Clinical insight.
+                <br />
+                <em>Meaningful innovation.</em>
+              </h1>
+              <p className="hero-body">
+                We bring medicine, research, and artificial intelligence
+                together to explore better ways to learn, understand clinical
+                language, and work with evidence. Our ideas begin with questions
+                from healthcare and grow through scientific inquiry.
+              </p>
+              <div className="hero-actions">
+                <a className="btn btn-gold" href="#research">
+                  Explore our research <Arrow />
+                </a>
+                <a className="btn btn-outline" href="#products">
+                  Discover our solutions <Arrow />
+                </a>
+              </div>
+            </div>
+            <div className="hero-foot">
+              <span>Healthcare · Education · Research</span>
+              <span lang="ar" dir="rtl">
+                من عُمان، للمستقبل
+              </span>
+            </div>
+          </div>
+        </section>
+        <section className="intro-strip" aria-label="Our focus">
+          <div className="container">
+            <p>
+              Shared curiosity.
+              <br />
+              <strong>Connected disciplines.</strong>
             </p>
-            <div className="hero-actions">
-              <a href="#products" className="btn btn-primary">Explore Platforms</a>
-              <a href="#founder" className="btn btn-ghost">Meet the Founder</a>
-            </div>
-            <div className="hero-metrics">
-              {[['6','Live Platforms'],['3,550+','Clinical Questions'],['88','Publications'],['10+','Countries']].map(([v, l]) => (
-                <div key={l} className="metric">
-                  <span className="metric-val">{v}</span>
-                  <span className="metric-lbl">{l}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="scan-line"></div>
-        </section>
-
-        {/* ── Pipeline ── */}
-        <section className="pipeline">
-          <div className="container">
-            <div className="pipe-track">
-              {[
-                { n: '01', label: 'Learn', product: 'Bayan', c: '#7de2d1' },
-                { n: '02', label: 'Document', product: 'Medad', c: '#70b8ff' },
-                { n: '03', label: 'Research', product: 'JournalReady', c: '#b696ff' },
-                { n: '04', label: 'Schedule', product: 'SmartRota', c: '#7ddf92' },
-                { n: '05', label: 'Analyze', product: 'OHealth', c: '#48d2bd' },
-                { n: '06', label: 'Plan', product: 'OLearn', c: '#9cb0ff' },
-              ].map((s, i) => (
-                <div key={s.n} className="pipe-step">
-                  <div className="pipe-node" style={{ '--nc': s.c } as CSSProperties}>{s.n}</div>
-                  <div className="pipe-label">{s.label}</div>
-                  <div className="pipe-product">{s.product}</div>
-                  {i < 5 && <div className="pipe-line"></div>}
-                </div>
-              ))}
-            </div>
+            <a href="#products" onClick={() => setCategory("Learning")}>
+              Learning sciences <span>01</span>
+            </a>
+            <a
+              href="#products"
+              onClick={() => setCategory("Clinical practice")}
+            >
+              Clinical innovation <span>02</span>
+            </a>
+            <a href="#research">
+              Arabic clinical AI <span>03</span>
+            </a>
           </div>
         </section>
 
-        {/* ── Products ── */}
-        <section className="section" id="products">
+        <section
+          className="section products-section"
+          id="products"
+          aria-labelledby="products-title"
+        >
           <div className="container">
-            <div className="section-head">
-              <p className="eyebrow">Product Portfolio</p>
-              <h2>Six Platforms. One Mission.</h2>
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">OUR SOLUTIONS & INITIATIVES</p>
+                <h2 id="products-title">
+                  Where ideas
+                  <br />
+                  become applications.
+                </h2>
+              </div>
+              <p>
+                A connected body of work across medical education, clinical
+                practice, research methods, and open data. Each initiative
+                explores a different challenge.
+              </p>
             </div>
+            <div
+              className="filters"
+              role="group"
+              aria-label="Filter solutions by area"
+            >
+              {categories.map((c) => (
+                <button
+                  key={c}
+                  aria-pressed={category === c}
+                  onClick={() => setCategory(c)}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+            <p className="sr-only" role="status">
+              Showing {filtered.length} solutions
+            </p>
             <div className="product-grid">
-              {products.map(p => (
-                <article key={p.name} className={`product-card ${p.featured ? 'featured' : ''}`} style={{ '--ca': p.accent } as CSSProperties}>
-                  <div className="product-top">
-                    {p.logo
-                      ? <div className="product-mark has-img"><img src={p.logo} alt={p.name} /></div>
-                      : <div className="product-mark">{p.name[0]}</div>
-                    }
-                    <div>
-                      <h3>{p.name} {p.arabic && <span className="ar">{p.arabic}</span>}</h3>
-                      <p className="product-tag">{p.tag}</p>
-                    </div>
-                    <span className="live-pill"><span className="live-dot"></span>Live</span>
+              {filtered.map((p) => (
+                <article key={p.name} className="product-card">
+                  <div className="product-meta">
+                    <span>{p.category}</span>
+                    <span>{p.number}</span>
                   </div>
-                  <p className="product-desc">{p.desc}</p>
-                  <div className="product-nums">
-                    {p.metrics.map(([v, l]) => (
-                      <div key={l}><strong>{v}</strong><span>{l}</span></div>
+                  <img
+                    className="solution-logo"
+                    src={p.logo}
+                    alt={`${p.name} logo`}
+                    width="150"
+                    height="150"
+                    loading="lazy"
+                  />
+                  <h3>{p.name}</h3>
+                  <p className="product-label">{p.label}</p>
+                  <p className="product-desc">{p.description}</p>
+                  <ul>
+                    {p.features.map((f) => (
+                      <li key={f}>{f}</li>
                     ))}
+                  </ul>
+                  <a
+                    className="product-link"
+                    href={p.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {p.cta}
+                    <Arrow />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </article>
+              ))}
+            </div>
+            <p className="directory-note">
+              Explore each initiative for its scope and current work. Medad’s
+              Arabic clinical AI research is introduced below.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="research-section"
+          id="research"
+          aria-labelledby="research-title"
+        >
+          <div className="container research-grid">
+            <div>
+              <p className="eyebrow">
+                RESEARCH SPOTLIGHT <span className="status">ACTIVE R&D</span>
+              </p>
+              <img
+                className="research-logo"
+                src="/brand/medad.png"
+                alt="Medad logo"
+                width="150"
+                height="150"
+                loading="lazy"
+              />
+              <h2 id="research-title">
+                Medad{" "}
+                <span lang="ar" dir="rtl">
+                  مداد
+                </span>
+              </h2>
+              <h3>
+                Clinical conversations.
+                <br />
+                In the language of care.
+              </h3>
+              <p>
+                Arabic clinical conversations deserve tools built around their
+                language and context. Medad explores how speech recognition and
+                AI can support structured clinical documentation, with
+                clinicians reviewing the output.
+              </p>
+              <a
+                className="btn btn-gold"
+                href="mailto:info@bayanai.tech?subject=Medad%20research%20collaboration"
+              >
+                Discuss Medad research <Arrow />
+              </a>
+              <a
+                className="quiet-link"
+                href="https://www.medad.om"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit the Medad project <Arrow />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </div>
+            <div className="research-workflow">
+              <p className="workflow-caption">THE WORKFLOW UNDER DEVELOPMENT</p>
+              {[
+                [
+                  "01",
+                  "Listen in context",
+                  "Arabic speech recognition shaped around clinical conversations and regional dialects.",
+                ],
+                [
+                  "02",
+                  "Structure the information",
+                  "Explore the generation of organized clinical notes from transcribed encounters.",
+                ],
+                [
+                  "03",
+                  "Keep clinicians in the loop",
+                  "Support review and correction before documentation is relied on.",
+                ],
+              ].map(([n, title, desc]) => (
+                <div className="workflow-step" key={n}>
+                  <span>{n}</span>
+                  <div>
+                    <h4>{title}</h4>
+                    <p>{desc}</p>
                   </div>
-                  <div className="tech-row">
-                    {p.tech.map(t => <span key={t} className="tech-pill">{t}</span>)}
-                  </div>
-                  <a href={p.url} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">Visit {p.name}</a>
+                </div>
+              ))}
+              <p className="research-note">
+                Research and evaluation are ongoing. Deployment and
+                data-handling requirements are discussed for each collaboration.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section approach" id="approach">
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">OUR SCIENTIFIC APPROACH</p>
+                <h2>
+                  Questions first.
+                  <br />
+                  Evidence throughout.
+                </h2>
+              </div>
+              <p>
+                Our guiding principles connect domain knowledge with careful
+                evaluation. We distinguish an idea, a working application, and
+                evidence of benefit.
+              </p>
+            </div>
+            <div className="principles">
+              {[
+                [
+                  "Ask a meaningful question",
+                  "Start with a clinical, educational, or research challenge. Understand the context before deciding where technology can contribute.",
+                ],
+                [
+                  "Examine the evidence",
+                  "Consider sources, methods, and limitations. Bayan’s publication workflow includes review, citation checks, and revision; AI support does not replace professional judgment.",
+                ],
+                [
+                  "Learn through collaboration",
+                  "Bring clinical and technical perspectives together. Our Omani roots shape our interest in regional learning needs and Arabic clinical language.",
+                ],
+              ].map(([title, desc], i) => (
+                <article key={title}>
+                  <span>0{i + 1}</span>
+                  <h3>{title}</h3>
+                  <p>{desc}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Oman + Vision 2040 (combined) ── */}
-        <section className="section section-alt" id="oman">
-          <div className="container oman-layout">
-            <div className="oman-text">
-              <p className="eyebrow">Built in Oman</p>
-              <h2>Born in Muscat.<br />Built for the World.</h2>
-              <p className="muted">
-                Designed and engineered in Oman, serving healthcare professionals
-                across the Middle East, South Asia, Europe, and North America.
-                Aligned with Oman Vision 2040 — a knowledge economy built on
-                technology, not just resources.
+        <section className="section story" id="about">
+          <div className="container story-grid">
+            <div className="founder-visual">
+              <img
+                src="/dr-alawi.jpg"
+                width="600"
+                height="800"
+                loading="lazy"
+                alt="Dr. Abdullah M. Al Alawi, founder of Bayan AI Technologies"
+              />
+              <div>
+                <span>PHYSICIAN. RESEARCHER. BUILDER.</span>
+                <strong>Dr. Abdullah M. Al Alawi</strong>
+                <p>Founder & CEO</p>
+              </div>
+            </div>
+            <div className="story-copy">
+              <p className="eyebrow">OUR STORY</p>
+              <h2>
+                Rooted in Oman.
+                <br />
+                Built around people.
+              </h2>
+              <p>
+                Bayan AI Technologies is a healthcare technology company based
+                in Muscat. We bring clinical experience, research, and software
+                development together to address the everyday work of healthcare
+                and education.
               </p>
-              <div className="market-tags">
-                {['Oman','Saudi Arabia','UAE','Qatar','Kuwait','Bahrain','Egypt','India','Pakistan','UK','USA','Australia'].map(c => (
-                  <span key={c} className="market-tag">{c}</span>
-                ))}
-              </div>
-              <div className="vision-cards">
-                {[
-                  ['Health','Bayan + Medad improve how doctors learn and document — reducing errors, improving care.'],
-                  ['Economy','Exporting Omani-built AI to 10+ countries, generating international revenue.'],
-                  ['Data','OHealth turns national open data into actionable intelligence for health planning.'],
-                  ['Education','JournalReady + OLearn accelerate research output and education planning.'],
-                ].map(([pillar, body]) => (
-                  <div key={pillar} className="vision-card">
-                    <span className="vision-pillar">{pillar}</span>
-                    <p>{body}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="oman-map-wrap">
-              <OmanMap />
-            </div>
-          </div>
-        </section>
-
-        {/* ── Founder ── */}
-        <section className="section" id="founder">
-          <div className="container founder-layout">
-            <div className="founder-photo-col">
-              <div className="founder-photo-frame">
-                <img src="/dr-alawi.jpg" alt="Dr. Abdullah M. Al Alawi" />
-              </div>
-              <div className="founder-id">
-                <h3>Dr. Abdullah M. Al Alawi</h3>
-                <p className="founder-creds">B.Sc., MD, M.Sc., M.Sc., FRACP, FACP</p>
-                <p className="founder-role">Founder & CEO</p>
-              </div>
-            </div>
-            <div className="founder-info">
-              <p className="eyebrow">Leadership</p>
-              <h2>A Physician Who Builds Products</h2>
-              <p className="muted">
-                Dual fellowships (FRACP + FACP), two Master's degrees in
-                clinical epidemiology and health research (both from Australia),
-                member of the American College of AI and Medicine. 88
-                publications, h-index 18, and over 104,700 OMR in competitive
-                research grants — combining clinical depth with AI/ML expertise
-                to build products that solve real problems.
+              <p>
+                Founded by physician and researcher Dr. Abdullah Al Alawi, our
+                work connects a simple ambition with practical tools: help
+                people learn, work, and create knowledge with greater clarity.
               </p>
-              <div className="founder-stats">
-                {[['88','Publications'],['1,777+','Citations'],['h-18','H-Index'],['104K+','OMR Grants']].map(([v, l]) => (
-                  <div key={l} className="f-stat"><strong>{v}</strong><span>{l}</span></div>
-                ))}
+              <div className="story-detail">
+                <strong>Local knowledge. Shared discovery.</strong>
+                <p>
+                  We welcome universities, healthcare institutions, and research
+                  groups interested in scientific exchange and collaborative
+                  evaluation.
+                </p>
               </div>
-              <div className="founder-section">
-                <h4>Selected Awards</h4>
-                {awards.map(([yr, aw]) => (
-                  <div key={aw} className="award-row"><span className="award-yr">{yr}</span><span>{aw}</span></div>
-                ))}
-              </div>
-              <div className="founder-section">
-                <h4>Credentials</h4>
-                <div className="cred-list">
-                  {[
-                    'Fellow, Royal Australasian College of Physicians (FRACP)',
-                    'Fellow, American College of Physicians (FACP)',
-                    'Member, American College of AI and Medicine (ACAIM)',
-                    'M.Sc. Health Research — Charles Darwin University (2026)',
-                    'M.Sc. Clinical Epidemiology with Distinction — Newcastle, Australia',
-                    'MD with Distinction — Sultan Qaboos University',
-                  ].map(c => <div key={c} className="cred-item"><span className="check">&#10003;</span>{c}</div>)}
-                </div>
-              </div>
-              <div className="founder-links">
-                {[
-                  ['PubMed','https://pubmed.ncbi.nlm.nih.gov/?term=Al+Alawi+AM'],
-                  ['ORCID','https://orcid.org/0000-0003-2077-7186'],
-                  ['ResearchGate','https://www.researchgate.net/profile/Abdullah-Al-Alawi-4'],
-                  ['LinkedIn','https://www.linkedin.com/in/abdullah-al-alawi-4'],
-                ].map(([label, url]) => (
-                  <a key={label} href={url} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">{label}</a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Contact ── */}
-        <section className="section section-alt" id="contact">
-          <div className="container">
-            <div className="contact-card">
-              <p className="eyebrow">Contact</p>
-              <h2>Partner With Us</h2>
-              <p className="muted">Investors, institutions, and collaborators — let's build the future of healthcare AI together.</p>
-              <div className="contact-row">
-                <a href="mailto:info@bayanai.tech" className="contact-item">
-                  <span className="contact-label">Email</span>
-                  <span>info@bayanai.tech</span>
+              <div className="text-links">
+                <a
+                  href="https://orcid.org/0000-0003-2077-7186"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Research profile <Arrow />
                 </a>
-                <div className="contact-item">
-                  <span className="contact-label">Location</span>
-                  <span>Muscat, Sultanate of Oman</span>
-                </div>
-              </div>
-              <div className="contact-social">
-                {[['LinkedIn','https://www.linkedin.com/in/abdullah-al-alawi-4'],['X','https://x.com/Medresearch_om'],['ResearchGate','https://www.researchgate.net/profile/Abdullah-Al-Alawi-4']].map(([l, u]) => (
-                  <a key={l} href={u} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">{l}</a>
-                ))}
+                <a
+                  href="https://www.linkedin.com/in/abdullah-al-alawi-4"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn <Arrow />
+                </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="section faq-section" id="faq">
+          <div className="container faq-grid">
+            <div>
+              <p className="eyebrow">A LITTLE MORE CLARITY</p>
+              <h2>
+                Good questions.
+                <br />
+                Clear answers.
+              </h2>
+              <a className="quiet-link" href="mailto:info@bayanai.tech">
+                Ask us something else <Arrow />
+              </a>
+            </div>
+            <div>
+              {faqs.map(([q, a]) => (
+                <details key={q}>
+                  <summary>
+                    {q}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <p>{a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-section" id="contact">
+          <div className="container">
+            <p className="eyebrow">RESEARCH & COLLABORATION</p>
+            <h2>
+              Better questions.
+              <br />
+              <em>Shared discovery.</em>
+            </h2>
+            <p>
+              Connect with us around a research question, a method, or an idea.
+            </p>
+            <div className="contact-paths">
+              {[
+                [
+                  "Clinical research",
+                  "Explore clinical language, evaluation methods, and healthcare questions.",
+                  "Clinical research collaboration",
+                ],
+                [
+                  "Academic collaboration",
+                  "Connect around learning sciences, research methods, and open data.",
+                  "Academic collaboration",
+                ],
+                [
+                  "Scientific exchange",
+                  "Share perspectives and explore interdisciplinary ideas with us.",
+                  "Scientific exchange",
+                ],
+              ].map(([title, desc, subject]) => (
+                <a
+                  key={title}
+                  href={`mailto:info@bayanai.tech?subject=${encodeURIComponent(subject)}`}
+                >
+                  <h3>
+                    {title}
+                    <Arrow />
+                  </h3>
+                  <p>{desc}</p>
+                </a>
+              ))}
+            </div>
+            <a className="contact-email" href="mailto:info@bayanai.tech">
+              info@bayanai.tech <Arrow />
+            </a>
           </div>
         </section>
       </main>
-
-      {/* ── Footer ── */}
-      <footer className="site-footer">
-        <div className="container footer-row">
-          <div className="brand-lockup">
-            <BrandMark compact />
-            <div className="brand-copy">
-              <span className="brand-title">Bayan AI Technologies LLC</span>
-              <span className="brand-sub">Healthcare AI from Oman</span>
-            </div>
-          </div>
-          <p className="footer-copy">&copy; 2026 Bayan AI Technologies LLC &middot; Muscat, Sultanate of Oman</p>
+      <footer>
+        <div className="container footer-main">
+          <img
+            className="footer-company-logo"
+            src="/brand/bayan-ai.png"
+            alt="Bayan AI Technologies logo"
+            width="120"
+            height="120"
+            loading="lazy"
+          />
+          <p>
+            Bayan AI Technologies LLC
+            <br />
+            Muscat, Sultanate of Oman
+          </p>
+          <a href="#top">Back to top ↑</a>
+        </div>
+        <div className="container footer-bottom">
+          <span>© {new Date().getFullYear()} Bayan AI Technologies LLC</span>
+          <span>Science. Research. Innovation.</span>
         </div>
       </footer>
     </>
-  )
+  );
 }
