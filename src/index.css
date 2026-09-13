@@ -156,9 +156,9 @@ summary:focus-visible {
   right: 0;
   top: 0;
   height: 100%;
-  width: 57%;
+  width: 72%;
   object-fit: cover;
-  object-position: 35% center;
+  object-position: 57% center;
   z-index: -2;
 }
 .hero:after {
@@ -177,10 +177,10 @@ summary:focus-visible {
     linear-gradient(0deg, #071625 0%, transparent 25%);
 }
 .hero-inner {
-  padding-top: 84px;
+  padding-top: 94px;
 }
 .hero-copy {
-  max-width: 770px;
+  max-width: 720px;
 }
 .eyebrow {
   font-size: 10px;
@@ -205,7 +205,7 @@ summary:focus-visible {
 }
 h1 {
   font-family: var(--display);
-  font-size: clamp(46px, 5.1vw, 74px);
+  font-size: clamp(46px, 5.5vw, 80px);
   line-height: 1.1;
   font-weight: 400;
   letter-spacing: -1.8px;
@@ -348,23 +348,24 @@ h2 {
 }
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 .product-card {
-  background: #fff;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 5%, white), white 65%);
   border: 1px solid var(--line);
-  padding: 28px;
+  border-top: 3px solid var(--accent);
+  padding: 36px;
   display: flex;
   flex-direction: column;
-  border-radius: 7px;
+  border-radius: 3px;
   transition:
     border-color 0.2s,
     transform 0.2s;
 }
 .product-card:hover {
   transform: translateY(-3px);
-  border-color: #b49b69;
+  border-color: var(--accent);
 }
 .product-meta {
   display: flex;
@@ -383,11 +384,11 @@ h2 {
   letter-spacing: -0.5px;
 }
 .solution-logo {
-  width: 150px;
-  height: 150px;
+  width: 112px;
+  height: 112px;
   object-fit: contain;
   background: white;
-  margin: -15px auto 20px;
+  margin: -15px 0 20px;
 }
 .research-logo {
   width: 130px;
@@ -399,7 +400,7 @@ h2 {
 }
 .product-label {
   font-size: 11px;
-  color: #7c653c;
+  color: var(--accent);
   line-height: 1.6;
   margin-top: 6px;
 }
@@ -441,6 +442,114 @@ h2 {
   font-size: 11px;
   color: var(--muted);
   margin-top: 20px;
+}
+.product-question {
+  font-family: var(--display);
+  font-size: 26px;
+  line-height: 1.3;
+  max-width: 410px;
+  margin-top: 24px;
+}
+.sample-link {
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 12px 0 24px;
+}
+.ecosystem-directory {
+  background: #fffefa;
+  padding: 46px 0 52px;
+  border-bottom: 1px solid var(--line);
+}
+.directory-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 28px;
+}
+.directory-heading .eyebrow {
+  margin-bottom: 10px;
+}
+.directory-heading h2 {
+  font-size: clamp(26px, 3vw, 37px);
+}
+.directory-heading > p {
+  max-width: 280px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.directory-tiles {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+}
+.directory-tiles a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-bottom: 3px solid var(--accent);
+  padding: 14px 14px 36px;
+  transition: background .2s;
+}
+.directory-tiles a:hover {
+  background: color-mix(in srgb, var(--accent) 7%, white);
+}
+.directory-tiles img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+.directory-tiles strong {
+  font-size: 13px;
+}
+.directory-tiles span:not(.directory-arrow) {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.directory-arrow {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  color: var(--accent);
+}
+@media (min-width: 1060px) {
+  .product-bayan,
+  .product-journalready {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    column-gap: 28px;
+  }
+  .product-bayan > *,
+  .product-journalready > * {
+    grid-column: 2;
+  }
+  .product-bayan .solution-logo,
+  .product-journalready .solution-logo {
+    grid-column: 1;
+    grid-row: 2 / 6;
+    margin-top: 0;
+  }
+  .product-bayan .product-meta,
+  .product-journalready .product-meta {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1050px) {
+  .directory-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .directory-heading { display: block; }
+  .directory-heading > p { margin-top: 16px; max-width: none; }
+  .directory-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .directory-tiles a:last-child { grid-column: 1 / -1; }
+  .ecosystem-directory { padding: 32px 0; }
 }
 .research-section {
   background: radial-gradient(ellipse at top right, #224058, var(--navy) 75%);

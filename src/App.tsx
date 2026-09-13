@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 
 const categories = [
   "All solutions",
@@ -116,6 +116,14 @@ const products: {
     logo: "/brand/olearn.svg",
   },
 ];
+const solutionIdentity: Record<string, { accent: string; question: string }> = {
+  Bayan: { accent: "#0067b6", question: "How do we turn knowledge into clinical reasoning?" },
+  PreOp: { accent: "#007e93", question: "How can evidence be easier to use before surgery?" },
+  JournalReady: { accent: "#7633a5", question: "How can researchers work more clearly with evidence?" },
+  SmartRota: { accent: "#087a6e", question: "How can rotation planning reflect training needs?" },
+  OHealth: { accent: "#287a41", question: "What can open data reveal about health systems?" },
+  OLearn: { accent: "#4c51a5", question: "How can education data inform better questions?" },
+};
 const faqs = [
   [
     "What is the difference between Bayan AI and Bayan?",
@@ -226,9 +234,9 @@ export default function App() {
         <section className="hero" id="top" aria-labelledby="hero-title">
           <img
             className="hero-art"
-            src="/artwork/ai-oman.jpg"
-            width="1391"
-            height="1131"
+            src="/artwork/oman-globe.jpg"
+            width="1800"
+            height="1013"
             alt=""
             fetchPriority="high"
           />
@@ -238,24 +246,21 @@ export default function App() {
                 <span className="small-line" /> SCIENCE & INNOVATION FROM OMAN
               </p>
               <h1 id="hero-title">
-                Scientific curiosity.
+                Where Medicine
                 <br />
-                Clinical insight.
-                <br />
-                <em>Meaningful innovation.</em>
+                Meets <em>Intelligence.</em>
               </h1>
               <p className="hero-body">
-                We bring medicine, research, and artificial intelligence
-                together to explore better ways to learn, understand clinical
-                language, and work with evidence. Our ideas begin with questions
-                from healthcare and grow through scientific inquiry.
+                Clinical insight. Scientific curiosity. Technology with purpose.
+                From Oman, we explore new ways to learn, understand clinical
+                language, and work with evidence.
               </p>
               <div className="hero-actions">
-                <a className="btn btn-gold" href="#research">
-                  Explore our research <Arrow />
+                <a className="btn btn-gold" href="#ecosystem">
+                  Explore the ecosystem <Arrow />
                 </a>
-                <a className="btn btn-outline" href="#products">
-                  Discover our solutions <Arrow />
+                <a className="btn btn-outline" href="#research">
+                  Our research <Arrow />
                 </a>
               </div>
             </div>
@@ -267,25 +272,23 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section className="intro-strip" aria-label="Our focus">
+        <section className="ecosystem-directory" id="ecosystem" aria-labelledby="directory-title">
           <div className="container">
-            <p>
-              Shared curiosity.
-              <br />
-              <strong>Connected disciplines.</strong>
-            </p>
-            <a href="#products" onClick={() => setCategory("Learning")}>
-              Learning sciences <span>01</span>
-            </a>
-            <a
-              href="#products"
-              onClick={() => setCategory("Clinical practice")}
-            >
-              Clinical innovation <span>02</span>
-            </a>
-            <a href="#research">
-              Arabic clinical AI <span>03</span>
-            </a>
+            <div className="directory-heading">
+              <div><p className="eyebrow">ONE CONNECTED ECOSYSTEM</p>
+                <h2 id="directory-title">Different questions. Shared purpose.</h2></div>
+              <p>Seven initiatives across learning, clinical practice, research, and open data.</p>
+            </div>
+            <div className="directory-tiles">
+              {[...products, { name: "Medad", logo: "/brand/medad.png", label: "Arabic clinical AI · R&D" }].map(p => (
+                <a key={p.name} href={p.name === "Medad" ? "#research" : `#solution-${p.name.toLowerCase()}`}
+                  onClick={() => setCategory("All solutions")}
+                  style={{ "--accent": solutionIdentity[p.name]?.accent ?? "#9c622c" } as CSSProperties}>
+                  <img src={p.logo} alt={`${p.name} logo`} width="100" height="100" />
+                  <strong>{p.name}</strong><span>{p.label}</span><span className="directory-arrow" aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -299,9 +302,9 @@ export default function App() {
               <div>
                 <p className="eyebrow">OUR SOLUTIONS & INITIATIVES</p>
                 <h2 id="products-title">
-                  Where ideas
+                  From a meaningful question
                   <br />
-                  become applications.
+                  to a practical application.
                 </h2>
               </div>
               <p>
@@ -330,7 +333,8 @@ export default function App() {
             </p>
             <div className="product-grid">
               {filtered.map((p) => (
-                <article key={p.name} className="product-card">
+                <article key={p.name} id={`solution-${p.name.toLowerCase()}`} className={`product-card product-${p.name.toLowerCase()}`}
+                  style={{ "--accent": solutionIdentity[p.name].accent } as CSSProperties}>
                   <div className="product-meta">
                     <span>{p.category}</span>
                     <span>{p.number}</span>
@@ -345,12 +349,18 @@ export default function App() {
                   />
                   <h3>{p.name}</h3>
                   <p className="product-label">{p.label}</p>
+                  <p className="product-question">{solutionIdentity[p.name].question}</p>
                   <p className="product-desc">{p.description}</p>
                   <ul>
                     {p.features.map((f) => (
                       <li key={f}>{f}</li>
                     ))}
                   </ul>
+                  {p.name === "Bayan" && (
+                    <a className="sample-link" href="https://www.bayan.edu.om/sample-quiz" target="_blank" rel="noreferrer">
+                      Try the real question experience <Arrow /><span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  )}
                   <a
                     className="product-link"
                     href={p.url}
