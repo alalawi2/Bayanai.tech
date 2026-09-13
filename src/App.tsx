@@ -561,6 +561,39 @@ export default function App() {
           </div>
         </section>
 
+        <section className="ecosystem" aria-labelledby="ecosystem-title">
+          <div className="container">
+            <p className="eyebrow">SUPPORTING OUR JOURNEY</p>
+            <h2 id="ecosystem-title">Growing within Oman’s innovation community.</h2>
+            <p className="ecosystem-intro">
+              Bayan AI Technologies is supported by Oman’s Small and Medium
+              Enterprises Development Authority and has received investment from
+              Future Fund Oman.
+            </p>
+            <div className="ecosystem-grid">
+              <article>
+                <p className="eyebrow">ENTERPRISE SUPPORT</p>
+                <h3>
+                  <a href="https://gov.om/en/the-authority-for-the-development-of-small-and-medium-enterprises">
+                    Small and Medium Enterprises Development Authority <Arrow />
+                  </a>
+                </h3>
+                <p lang="ar" dir="rtl">هيئة تنمية المؤسسات الصغيرة والمتوسطة</p>
+              </article>
+              <article>
+                <p className="eyebrow">INVESTMENT</p>
+                <h3>
+                  <a href="https://www.oia.gov.om/en/our-investments/future-fund-oman">
+                    Future Fund Oman <Arrow />
+                  </a>
+                </h3>
+                <p lang="ar" dir="rtl">صندوق عُمان المستقبل</p>
+                <p>Part of the Oman Investment Authority.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section className="section faq-section" id="faq">
           <div className="container faq-grid">
             <div>

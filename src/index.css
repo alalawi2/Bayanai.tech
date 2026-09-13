@@ -613,6 +613,51 @@ h2 {
   color: var(--muted);
   margin-top: 10px;
 }
+.ecosystem {
+  padding: 64px 0;
+  background: #f0eee7;
+  border-top: 1px solid #ddd8cc;
+  border-bottom: 1px solid #ddd8cc;
+}
+.ecosystem h2 {
+  max-width: 760px;
+  font-size: clamp(28px, 4vw, 42px);
+}
+.ecosystem-intro {
+  max-width: 740px;
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+.ecosystem-grid article {
+  border-top: 2px solid #b79a63;
+  padding-top: 24px;
+}
+.ecosystem-grid h3 {
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 480px;
+}
+.ecosystem-grid h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.ecosystem-grid article > p:not(.eyebrow) {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.ecosystem-grid [lang="ar"] {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  text-align: left;
+}
 .text-links {
   display: flex;
   gap: 28px;
