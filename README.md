@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Bayanai.tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Bayan AI Technologies website — a single static page with a scroll-controlled
+opening film and interactive product demos. Deployed to <https://bayanai.tech>.
 
-Currently, two official plugins are available:
+## Layout
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Path | What it is |
+| --- | --- |
+| `index.html` | Page content, navigation, and the `#app-data` JSON that drives the product demos |
+| `style.css` | All styles |
+| `app.js` | Scroll-driven film sequence, demo panels, navigation |
+| `assets/videos/scrub/` | Opening film clips, seeked by scroll position on desktop |
+| `assets/videos/m/hero.mp4` | Single autoplay opening clip used on phones |
+| `assets/scenes/posters/` | First/last frames shown before and after the film |
+| `assets/screens/` | Product demo screenshots (`<app>-<step>-<state>-<desktop\|mobile>.png`) |
+| `assets/logos/` | Product wordmark symbols |
+| `artwork/`, `brand/`, `logos/`, `screenshots/`, `social/` | Earlier brand and social assets, kept at their original URLs |
 
-## React Compiler
+## Local preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The scroll-controlled film seeks inside the MP4s, so the server must answer HTTP
+range requests (`206 Partial Content`). Python's built-in `http.server` does not,
+and the film will not seek under it. Use a server that does, for example:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npx serve -l 8080
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open <http://localhost:8080>.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Deployment
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+There is no build step. Vercel serves the repository root as-is (`vercel.json`
+sets `buildCommand` to empty and `outputDirectory` to `.`). Pushing to `main`
+publishes.
+
+Videos must be served as `video/mp4` with byte-range support — scroll seeking
+depends on it.
+
+## History
+
+Through September 2026 this repository held a React + TypeScript + Vite
+application. It was replaced by this static site; the old source remains in the
+git history before the "Replace Vite app with static scroll-film site" commit.

@@ -1,43 +1,529 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Bayan AI Technologies | Science, Research & Innovation from Oman
-    </title>
-    <meta
-      name="description"
-      content="Science and innovation from Oman. Explore Bayan AI's work in medical education, Arabic clinical language, research methods, and health and education data."
-    />
-    <meta property="og:title" content="Bayan AI Technologies" />
-    <meta
-      property="og:description"
-      content="Connecting clinical insight, scientific inquiry, and artificial intelligence. Discover our research, solutions, and opportunities for scientific collaboration."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bayanai.tech/" />
-    <meta
-      property="og:image"
-      content="https://bayanai.tech/artwork/ai-oman.jpg"
-    />
-    <meta
-      property="og:image:alt"
-      content="Bayan AI artwork connecting artificial intelligence and Oman"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://bayanai.tech/" />
-    <meta name="theme-color" content="#06111d" />
-    <link rel="icon" type="image/png" href="/brand/bayan-ai.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bayan AI Technologies | Science, Research &amp; Innovation from Oman</title>
+<meta name="description" content="Science and innovation from Oman. Explore Bayan AI's work in medical education, Arabic clinical language, research methods, and health and education data.">
+<meta name="theme-color" content="#0b1a28">
+<meta property="og:title" content="Bayan AI Technologies">
+<meta property="og:description" content="Connecting clinical insight, scientific inquiry, and artificial intelligence. Discover our research, solutions, and opportunities for scientific collaboration.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://bayanai.tech/artwork/ai-oman.jpg">
+<meta property="og:image:alt" content="Bayan AI artwork connecting artificial intelligence and Oman">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logos/bayan-ai-mark-white.png">
+<link rel="preload" as="image" href="assets/scenes/posters/opening-start.jpg" media="(min-width: 761px) and (orientation: landscape)">
+<link rel="preload" as="image" href="assets/scenes/posters/opening-mobile-start.jpg" media="(max-width: 760px), ((max-width: 1100px) and (orientation: portrait))">
+<link rel="stylesheet" href="style.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="Bayan AI Technologies home"><img src="assets/logos/bayan-ai-mark-white.png" alt=""><span>Bayan AI<small>SCIENCE &amp; INNOVATION</small></span></a>
+  <nav id="main-navigation" aria-label="Main navigation">
+    <a href="#products">Solutions</a><a href="#research">Research</a><a href="#approach">Approach</a><a href="#about">About</a>
+  </nav>
+  <div class="header-actions">
+    <a class="contact-link" href="#contact">Collaborate <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span></button>
+  </div>
+</header>
+
+<aside class="side-rail" aria-label="Chapter navigation">
+  <a href="#top" class="active" aria-label="Introduction"><span>01</span><b>Introduction</b></a>
+  <a href="#solution-bayan" aria-label="Bayan"><span>02</span><b>Bayan</b></a>
+  <a href="#research" aria-label="Medad مداد"><span>03</span><b>Medad مداد</b></a>
+  <a href="#solution-preop" aria-label="PreOp"><span>04</span><b>PreOp</b></a>
+  <a href="#solution-journalready" aria-label="JournalReady"><span>05</span><b>JournalReady</b></a>
+  <a href="#solution-smartrota" aria-label="SmartRota"><span>06</span><b>SmartRota</b></a>
+  <a href="#solution-ohealth" aria-label="OHealth"><span>07</span><b>OHealth</b></a>
+  <a href="#solution-olearn" aria-label="OLearn"><span>08</span><b>OLearn</b></a>
+  <div class="rail-line"></div>
+  <span class="rail-caption">FROM OMAN</span>
+</aside>
+
+<main id="main">
+
+  <!-- ============ OPENING: globe → Oman → coast → the laptop opens ============ -->
+  <section class="hero-journey scroll-scene" id="top"
+           data-clips="01-world,02-descent,03-coast-cut" data-clip-seconds="6.0417,6.0417,4.2083"
+           data-phases="0,0.9,0.9,1">
+    <div class="film">
+      <div class="film-frame">
+        <div class="video-sequence">
+          <img class="sequence-poster" src="assets/scenes/posters/opening-start.jpg" alt="" fetchpriority="high">
+          <video class="sequence-video" muted playsinline preload="none" aria-hidden="true"></video>
+          <video class="sequence-video" muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <!-- Phones: the portrait film simply plays once. -->
+      <video class="mobile-film" src="assets/videos/m/hero.mp4?v=20260921e" muted playsinline preload="none" poster="assets/scenes/posters/opening-mobile-start.jpg" aria-hidden="true"></video>
+    </div>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SCIENCE &amp; INNOVATION FROM OMAN</p>
+        <h1>Where Medicine<br>Meets <em>Intelligence.</em></h1>
+        <p class="hero-intro">Clinical insight. Scientific curiosity. Technology with purpose. From Oman, we explore new ways to learn, understand clinical language, and work with evidence.</p>
+        <div class="actions">
+          <a class="button light" href="#ecosystem">Explore the ecosystem <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          <a class="text-link" href="#research">Our research <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="journey-note" aria-hidden="true">
+        <span class="eyebrow">ONE CONNECTED ECOSYSTEM</span>
+        <h3>Different questions.<br>Shared purpose.</h3>
+        <p>Seven initiatives across learning, clinical practice, research, and open data.</p>
+        <div class="note-route"><i></i><span>Oman</span><span>Bayan</span><span>Medad</span></div>
+      </div>
+      <div class="hero-bottom">
+        <span>Healthcare · Education · Research</span>
+        <span lang="ar" dir="rtl">من عُمان، للمستقبل</span>
+        <a href="#ecosystem">Scroll to discover <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.8v8.4M2.6 6.8 6 10.2l3.4-3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="motion-progress" aria-hidden="true"><i></i></div>
+      <div class="film-title">
+        <p class="eyebrow">SCIENCE &amp; INNOVATION FROM OMAN</p>
+        <h1>Where Medicine<br>Meets <em>Intelligence.</em></h1>
+        <p class="hero-intro">Clinical insight. Scientific curiosity. Technology with purpose. From Oman, we explore new ways to learn, understand clinical language, and work with evidence.</p>
+        <div class="actions">
+          <a class="button light" href="#ecosystem">Explore the ecosystem <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          <a class="text-link" href="#research">Our research <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ECOSYSTEM ============ -->
+  <section class="white-section" id="ecosystem">
+    <div class="section-intro">
+      <p class="eyebrow">ONE CONNECTED ECOSYSTEM</p>
+      <h2>Different questions.<br><em>Shared purpose.</em></h2>
+      <p>Seven initiatives across learning, clinical practice, research, and open data.</p>
+    </div>
+    <div class="directory">
+      <a href="#solution-bayan"><img src="assets/logos/bayan-mark-white.png" alt="Bayan logo" loading="lazy"><h3>Bayan</h3><p>Medical education &amp; exam preparation</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#research"><img src="assets/logos/medad-mark-white.png" alt="Medad مداد logo" loading="lazy"><h3>Medad مداد</h3><p>Arabic clinical AI · R&amp;D</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#solution-preop"><img src="assets/logos/preop-mark-white.png" alt="PreOp logo" loading="lazy"><h3>PreOp</h3><p>Perioperative medicine toolkit</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#solution-journalready"><img src="assets/logos/journalready-mark-white.png" alt="JournalReady logo" loading="lazy"><h3>JournalReady</h3><p>From research idea to submission</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#solution-smartrota"><img src="assets/logos/smartrota-mark-white.png" alt="SmartRota logo" loading="lazy"><h3>SmartRota</h3><p>Residency rotation planning</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#solution-ohealth"><img src="assets/logos/ohealth-mark-white.png" alt="OHealth logo" loading="lazy"><h3>OHealth</h3><p>Health data for better questions</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#solution-olearn"><img src="assets/logos/olearn-mark-white.png" alt="OLearn logo" loading="lazy"><h3>OLearn</h3><p>Education data in context</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a href="#contact" class="directory-more"><img src="assets/logos/bayan-ai-mark-white.png" alt="Bayan AI logo" loading="lazy"><h3>Collaborate</h3><p>Research &amp; academic partnerships</p><span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- ============ SOLUTIONS INTRO (+ mobile category folders) ============ -->
+  <section class="white-section product-intro" id="products">
+    <p class="eyebrow">OUR SOLUTIONS &amp; INITIATIVES</p>
+    <h2>From a meaningful question<br>to a practical application.</h2>
+    <p>A connected body of work across medical education, clinical practice, research methods, and open data. Each initiative explores a different challenge.</p>
+    <div class="filters" role="group" aria-label="Filter solutions by area">
+      <button data-filter="All solutions" aria-pressed="true">All solutions</button>
+      <button data-filter="Learning" aria-pressed="false">Learning</button>
+      <button data-filter="Clinical practice" aria-pressed="false">Clinical practice</button>
+      <button data-filter="Research" aria-pressed="false">Research</button>
+      <button data-filter="Intelligence" aria-pressed="false">Intelligence</button>
+    </div>
+    <p class="filter-count" role="status">Showing 6 solutions</p>
+    <p class="scope-note">Explore each initiative for its scope and current work. Medad’s Arabic clinical AI research is introduced below.</p>
+
+    <!-- Mobile: solutions are grouped into category folders. Chapters are moved in by app.js on small screens. -->
+    <div class="folders" aria-label="Solutions by area">
+      <details class="folder" data-category="Learning" open>
+        <summary>
+          <span class="folder-index">01</span>
+          <span class="folder-title">Learning<small>Medical education &amp; exam preparation</small></span>
+          <span class="folder-marks"><img src="assets/logos/bayan-mark-white.png" alt="Bayan"></span>
+          <i class="folder-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="folder-body"></div>
+      </details>
+      <details class="folder" data-category="Research">
+        <summary>
+          <span class="folder-index">02</span>
+          <span class="folder-title">Research<small>Arabic clinical AI · Study design &amp; publication</small></span>
+          <span class="folder-marks"><img src="assets/logos/medad-mark-white.png" alt="Medad"><img src="assets/logos/journalready-mark-white.png" alt="JournalReady"></span>
+          <i class="folder-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="folder-body"></div>
+      </details>
+      <details class="folder" data-category="Clinical practice">
+        <summary>
+          <span class="folder-index">03</span>
+          <span class="folder-title">Clinical practice<small>Perioperative toolkit · Rotation planning</small></span>
+          <span class="folder-marks"><img src="assets/logos/preop-mark-white.png" alt="PreOp"><img src="assets/logos/smartrota-mark-white.png" alt="SmartRota"></span>
+          <i class="folder-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="folder-body"></div>
+      </details>
+      <details class="folder" data-category="Intelligence">
+        <summary>
+          <span class="folder-index">04</span>
+          <span class="folder-title">Intelligence<small>Health &amp; education data in context</small></span>
+          <span class="folder-marks"><img src="assets/logos/ohealth-mark-white.png" alt="OHealth"><img src="assets/logos/olearn-mark-white.png" alt="OLearn"></span>
+          <i class="folder-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="folder-body"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: BAYAN (push in to the screen) ============ -->
+  <section class="app-chapter" id="solution-bayan" data-app="bayan" data-category="Learning">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/bayan-mark-white.png" alt="Bayan logo" loading="lazy"><span class="eyebrow">LEARNING · 01</span></div>
+          <h2>Bayan</h2>
+          <p class="app-subtitle">Medical education &amp; exam preparation</p>
+        </header>
+        <div class="app-body">
+          <h3>How do we turn knowledge into clinical reasoning?</h3>
+          <p>A learning space for students, doctors, nurses, and pharmacists. Build clinical reasoning with question practice, explanations, and focused revision.</p>
+          <ul><li>Adaptive question sessions</li><li>Board &amp; licensing exam preparation</li><li>Flashcards, OSCE &amp; virtual patients</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://www.bayan.edu.om/" target="_blank" rel="noopener" aria-label="Explore Bayan (opens in a new tab)">Explore Bayan <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="text-link" href="https://www.bayan.edu.om/sample-quiz" target="_blank" rel="noopener" aria-label="Try the real question experience (opens in a new tab)">Try the real question experience <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the Bayan demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="Bayan illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Question</button><button data-demo-step="1" aria-pressed="false">Your answer</button><button data-demo-step="2" aria-pressed="false">Explanation</button>
+        </div>
+        <button class="expand-demo" data-open-demo="bayan">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: MEDAD (pull back, travel along the coast, the next laptop opens) ============ -->
+  <section class="app-chapter alt" id="research" data-app="medad" data-category="Research">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/medad-mark-white.png" alt="Medad مداد logo" loading="lazy"><span class="eyebrow">RESEARCH SPOTLIGHT · 02</span><span class="rd-label">ACTIVE R&amp;D</span></div>
+          <h2>Medad مداد</h2>
+          <p class="app-subtitle">Arabic clinical AI · R&amp;D</p>
+        </header>
+        <div class="app-body">
+          <h3>Clinical conversations. In the language of care.</h3>
+          <p>Arabic clinical conversations deserve tools built around their language and context. Medad explores how speech recognition and AI can support structured clinical documentation, with clinicians reviewing the output.</p>
+          <ul><li>Listen in context</li><li>Structure the information</li><li>Keep clinicians in the loop</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://www.medad.om/" target="_blank" rel="noopener" aria-label="Visit the Medad project (opens in a new tab)">Visit the Medad project <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="text-link" href="mailto:info@bayanai.tech?subject=Medad%20research%20collaboration">Discuss Medad research <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the Medad demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="Medad مداد illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Recording</button><button data-demo-step="1" aria-pressed="false">Transcript</button><button data-demo-step="2" aria-pressed="false">Note</button><button data-demo-step="3" aria-pressed="false">Review</button>
+        </div>
+        <button class="expand-demo" data-open-demo="medad">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white-section workflow" data-folder-after="research">
+    <p class="eyebrow">THE WORKFLOW UNDER DEVELOPMENT</p>
+    <div class="three-columns">
+      <article><span class="step-number">01</span><h3>Listen in context</h3><p>Arabic speech recognition shaped around clinical conversations and regional dialects.</p></article>
+      <article><span class="step-number">02</span><h3>Structure the information</h3><p>Explore the generation of organized clinical notes from transcribed encounters.</p></article>
+      <article><span class="step-number">03</span><h3>Keep clinicians in the loop</h3><p>Support review and correction before documentation is relied on.</p></article>
+    </div>
+    <p class="scope-note">Research and evaluation are ongoing. Deployment and data-handling requirements are discussed for each collaboration.</p>
+  </section>
+
+  <!-- ============ CHAPTER: PREOP ============ -->
+  <section class="app-chapter" id="solution-preop" data-app="preop" data-category="Clinical practice">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/preop-mark-white.png" alt="PreOp logo" loading="lazy"><span class="eyebrow">CLINICAL PRACTICE · 03</span></div>
+          <h2>PreOp</h2>
+          <p class="app-subtitle">Perioperative medicine toolkit</p>
+        </header>
+        <div class="app-body">
+          <h3>How can evidence be easier to use before surgery?</h3>
+          <p>Bring risk assessment, medication references, and perioperative planning into one practical workflow for healthcare professionals.</p>
+          <ul><li>Clinical risk calculators</li><li>Medication &amp; investigation references</li><li>Assessment and handoff tools</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://www.bayan.edu.om/preop" target="_blank" rel="noopener" aria-label="Explore PreOp (opens in a new tab)">Explore PreOp <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the PreOp demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="PreOp illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Assessment</button><button data-demo-step="1" aria-pressed="false">References</button>
+        </div>
+        <button class="expand-demo" data-open-demo="preop">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: JOURNALREADY ============ -->
+  <section class="app-chapter alt" id="solution-journalready" data-app="journalready" data-category="Research">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/journalready-mark-white.png" alt="JournalReady logo" loading="lazy"><span class="eyebrow">RESEARCH · 04</span></div>
+          <h2>JournalReady</h2>
+          <p class="app-subtitle">From research idea to submission</p>
+        </header>
+        <div class="app-body">
+          <h3>How can researchers work more clearly with evidence?</h3>
+          <p>Support the work around your research: study planning, statistical interpretation, manuscript preparation, and journal selection.</p>
+          <ul><li>Study design &amp; analysis tools</li><li>Manuscript and reference support</li><li>Journal selection &amp; submission</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://journalready.ai/" target="_blank" rel="noopener" aria-label="Explore JournalReady (opens in a new tab)">Explore JournalReady <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the JournalReady demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="JournalReady illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Study plan</button><button data-demo-step="1" aria-pressed="false">Manuscript</button>
+        </div>
+        <button class="expand-demo" data-open-demo="journalready">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: SMARTROTA ============ -->
+  <section class="app-chapter" id="solution-smartrota" data-app="smartrota" data-category="Clinical practice">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/smartrota-mark-white.png" alt="SmartRota logo" loading="lazy"><span class="eyebrow">CLINICAL PRACTICE · 05</span></div>
+          <h2>SmartRota</h2>
+          <p class="app-subtitle">Residency rotation planning</p>
+        </header>
+        <div class="app-body">
+          <h3>How can rotation planning reflect training needs?</h3>
+          <p>Organize rotations around training requirements, hospital sites, and scheduling constraints.</p>
+          <ul><li>Rotation planning</li><li>Training requirements</li><li>Multiple hospital sites</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://rota.medresearch-academy.om/" target="_blank" rel="noopener" aria-label="Sign in to SmartRota (opens in a new tab)">Sign in to SmartRota <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the SmartRota demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="SmartRota illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Rotations</button><button data-demo-step="1" aria-pressed="false">Placement</button>
+        </div>
+        <button class="expand-demo" data-open-demo="smartrota">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: OHEALTH ============ -->
+  <section class="app-chapter alt" id="solution-ohealth" data-app="ohealth" data-category="Intelligence">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/ohealth-mark-white.png" alt="OHealth logo" loading="lazy"><span class="eyebrow">INTELLIGENCE · 06</span></div>
+          <h2>OHealth</h2>
+          <p class="app-subtitle">Health data for better questions</p>
+        </header>
+        <div class="app-body">
+          <h3>What can open data reveal about health systems?</h3>
+          <p>Explore health-system data, capacity, and trends to support analysis and planning in Oman.</p>
+          <ul><li>Health-system indicators</li><li>Capacity &amp; trend exploration</li><li>National open data</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://ohealth.medresearch-academy.om/" target="_blank" rel="noopener" aria-label="Explore OHealth (opens in a new tab)">Explore OHealth <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the OHealth demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="OHealth illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Indicators</button><button data-demo-step="1" aria-pressed="false">Trends</button>
+        </div>
+        <button class="expand-demo" data-open-demo="ohealth">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: OLEARN ============ -->
+  <section class="app-chapter" id="solution-olearn" data-app="olearn" data-category="Intelligence">
+    <div class="chapter-layout">
+      <div class="app-copy">
+        <header class="app-head">
+          <div class="chapter-heading"><img class="ink-mark" src="assets/logos/olearn-mark-white.png" alt="OLearn logo" loading="lazy"><span class="eyebrow">INTELLIGENCE · 07</span></div>
+          <h2>OLearn</h2>
+          <p class="app-subtitle">Education data in context</p>
+        </header>
+        <div class="app-body">
+          <h3>How can education data inform better questions?</h3>
+          <p>Explore education trends, geographic patterns, and workforce indicators to inform planning and research.</p>
+          <ul><li>Education trends</li><li>Geographic insights</li><li>Workforce indicators</li></ul>
+          <div class="app-actions">
+            <a class="button dark" href="https://olearn-sandy.vercel.app/" target="_blank" rel="noopener" aria-label="Explore OLearn (opens in a new tab)">Explore OLearn <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="demo-stack">
+        <div class="demo-card screen-layer" role="button" tabindex="0" aria-label="Open the OLearn demo">
+          <div class="device"><div class="device-screen"><div class="screen-glass"></div></div><div class="device-base" aria-hidden="true"></div></div>
+        </div>
+        <div class="demo-toolbar">
+        <div class="demo-tabs" role="group" aria-label="OLearn illustrative demo steps">
+          <button data-demo-step="0" aria-pressed="true">Education</button><button data-demo-step="1" aria-pressed="false">Workforce</button>
+        </div>
+        <button class="expand-demo" data-open-demo="olearn">View demo <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="white-section approach" id="approach">
+    <div class="section-intro">
+      <p class="eyebrow">OUR SCIENTIFIC APPROACH</p>
+      <h2>Questions first.<br><em>Evidence throughout.</em></h2>
+      <p>Our guiding principles connect domain knowledge with careful evaluation. We distinguish an idea, a working application, and evidence of benefit.</p>
+    </div>
+    <div class="three-columns">
+      <article><span class="step-number">01</span><h3>Ask a meaningful question</h3><p>Start with a clinical, educational, or research challenge. Understand the context before deciding where technology can contribute.</p></article>
+      <article><span class="step-number">02</span><h3>Examine the evidence</h3><p>Consider sources, methods, and limitations. Bayan’s publication workflow includes review, citation checks, and revision; AI support does not replace professional judgment.</p></article>
+      <article><span class="step-number">03</span><h3>Learn through collaboration</h3><p>Bring clinical and technical perspectives together. Our Omani roots shape our interest in regional learning needs and Arabic clinical language.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="white-section about" id="about">
+    <figure class="founder">
+      <img src="assets/dr-alawi.jpg" alt="Dr. Abdullah M. Al Alawi, founder of Bayan AI Technologies" loading="lazy">
+      <figcaption><span class="eyebrow">PHYSICIAN. RESEARCHER. BUILDER.</span><strong>Dr. Abdullah M. Al Alawi</strong><span>Founder &amp; CEO</span></figcaption>
+    </figure>
+    <div class="about-copy">
+      <p class="eyebrow">OUR STORY</p>
+      <h2>Rooted in Oman.<br><em>Built around people.</em></h2>
+      <p>Bayan AI Technologies is a healthcare technology company based in Muscat. We bring clinical experience, research, and software development together to address the everyday work of healthcare and education.</p>
+      <p>Founded by physician and researcher Dr. Abdullah Al Alawi, our work connects a simple ambition with practical tools: help people learn, work, and create knowledge with greater clarity.</p>
+      <h3>Local knowledge. Shared discovery.</h3>
+      <p>We welcome universities, healthcare institutions, and research groups interested in scientific exchange and collaborative evaluation.</p>
+      <div class="actions">
+        <a class="text-link" href="https://orcid.org/0000-0003-2077-7186" target="_blank" rel="noopener" aria-label="Research profile (opens in a new tab)">Research profile <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a class="text-link" href="https://www.linkedin.com/in/abdullah-al-alawi-4" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)">LinkedIn <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUPPORTERS ============ -->
+  <section class="white-section supporters">
+    <div class="section-intro">
+      <p class="eyebrow">SUPPORTING OUR JOURNEY</p>
+      <h2>Growing within Oman’s<br><em>innovation community.</em></h2>
+      <p>Bayan AI Technologies is supported by Oman’s Small and Medium Enterprises Development Authority and has received investment from Future Fund Oman.</p>
+    </div>
+    <div class="support-grid">
+      <article>
+        <span class="eyebrow">ENTERPRISE SUPPORT</span>
+        <h3><a class="support-link" href="https://gov.om/en/the-authority-for-the-development-of-small-and-medium-enterprises" target="_blank" rel="noopener" aria-label="Small and Medium Enterprises Development Authority (opens in a new tab)">Small and Medium Enterprises Development Authority <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></h3>
+        <p lang="ar" dir="rtl">هيئة تنمية المؤسسات الصغيرة والمتوسطة</p>
+      </article>
+      <article>
+        <span class="eyebrow">INVESTMENT</span>
+        <h3><a class="support-link" href="https://www.oia.gov.om/en/our-investments/future-fund-oman" target="_blank" rel="noopener" aria-label="Future Fund Oman (opens in a new tab)">Future Fund Oman <span aria-hidden="true"><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></h3>
+        <p lang="ar" dir="rtl">صندوق عُمان المستقبل</p>
+        <p>Part of the Oman Investment Authority.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="white-section faq" id="faq">
+    <div>
+      <p class="eyebrow">A LITTLE MORE CLARITY</p>
+      <h2>Good questions.<br><em>Clear answers.</em></h2>
+      <a class="text-link" href="mailto:info@bayanai.tech">Ask us something else <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="faq-list">
+      <details><summary>What is the difference between Bayan AI and Bayan?<span aria-hidden="true">+</span></summary><p>Bayan AI Technologies brings clinical knowledge, research, and software development together. Bayan, at bayan.edu.om, is our medical education solution. Our wider work explores clinical language, perioperative practice, research methods, scheduling, and open data.</p></details>
+      <details><summary>What scientific questions connect the solutions?<span aria-hidden="true">+</span></summary><p>Our work explores how people develop clinical reasoning, how Arabic clinical conversations can become structured documentation, and how evidence and data can support research and planning. Each solution addresses a different part of that work.</p></details>
+      <details><summary>Is Medad available for routine clinical deployment?<span aria-hidden="true">+</span></summary><p>Medad is an active research and development project for Arabic clinical documentation. Research progress and readiness for routine clinical use are different milestones. We welcome discussion of evaluation methods, clinical language, and research collaboration.</p></details>
+      <details><summary>How can a university or hospital work with Bayan AI?<span aria-hidden="true">+</span></summary><p>Start with a research question or a clinical or educational challenge. We welcome discussions about collaborative evaluation, study design, regional language needs, and the responsible application of technology in healthcare.</p></details>
+      <details><summary>How should I interpret the research and solution descriptions?<span aria-hidden="true">+</span></summary><p>The descriptions explain areas of work and intended uses; they do not establish clinical efficacy. Research findings should be considered alongside their methods, evaluation setting, and limitations. Visit the relevant project for more detail, or contact us about a specific scientific question.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="white-section contact" id="contact">
+    <div class="section-intro">
+      <p class="eyebrow">RESEARCH &amp; COLLABORATION</p>
+      <h2>Better questions.<br><em>Shared discovery.</em></h2>
+      <p>Connect with us around a research question, a method, or an idea.</p>
+    </div>
+    <div class="three-columns contact-cards">
+      <a href="mailto:info@bayanai.tech?subject=Clinical%20research%20collaboration"><h3>Clinical research <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3><p>Explore clinical language, evaluation methods, and healthcare questions.</p></a>
+      <a href="mailto:info@bayanai.tech?subject=Academic%20collaboration"><h3>Academic collaboration <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3><p>Connect around learning sciences, research methods, and open data.</p></a>
+      <a href="mailto:info@bayanai.tech?subject=Scientific%20exchange"><h3>Scientific exchange <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3><p>Share perspectives and explore interdisciplinary ideas with us.</p></a>
+    </div>
+    <a class="email-link" href="mailto:info@bayanai.tech">info@bayanai.tech <span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <a class="brand" href="#top"><img src="assets/logos/bayan-ai-mark-white.png" alt="Bayan AI Technologies logo"><span>Bayan AI Technologies LLC<small>Muscat, Sultanate of Oman</small></span></a>
+    <a href="#top">Back to top <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 10.2V1.8M2.6 5.2 6 1.8l3.4 3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Bayan AI Technologies LLC</span><span>Science. Research. Innovation.</span></div>
+</footer>
+
+<dialog class="demo-dialog" aria-labelledby="demo-title">
+  <div class="dialog-heading">
+    <div><span class="eyebrow">ILLUSTRATIVE DEMO</span><h2 id="demo-title">Bayan</h2></div>
+    <button class="close-dialog" aria-label="Close demo">✕</button>
+  </div>
+  <div class="dialog-tabs" role="group" aria-label="Demo steps"></div>
+  <div class="dialog-screen"><img alt="Illustrative application screen"></div>
+  <p class="dialog-note">Illustrative interface based on the project’s described features.</p>
+</dialog>
+
+<script id="app-data" type="application/json">
+[
+  {"id":"bayan","name":"Bayan","category":"Learning","number":"01","subtitle":"Medical education & exam preparation","question":"How do we turn knowledge into clinical reasoning?","description":"A learning space for students, doctors, nurses, and pharmacists. Build clinical reasoning with question practice, explanations, and focused revision.","features":["Adaptive question sessions","Board & licensing exam preparation","Flashcards, OSCE & virtual patients"],"url":"https://www.bayan.edu.om/","cta":"Explore Bayan","states":["question","selected","explanation"],"labels":["Question","Your answer","Explanation"]},
+  {"id":"medad","name":"Medad مداد","category":"Research","number":"02","subtitle":"Arabic clinical AI · R&D","question":"Clinical conversations. In the language of care.","description":"Arabic clinical conversations deserve tools built around their language and context. Medad explores how speech recognition and AI can support structured clinical documentation, with clinicians reviewing the output.","features":["Listen in context","Structure the information","Keep clinicians in the loop"],"url":"https://www.medad.om/","cta":"Visit the Medad project","states":["recording","transcript","note","review"],"labels":["Recording","Transcript","Note","Review"]},
+  {"id":"preop","name":"PreOp","category":"Clinical practice","number":"03","subtitle":"Perioperative medicine toolkit","question":"How can evidence be easier to use before surgery?","description":"Bring risk assessment, medication references, and perioperative planning into one practical workflow for healthcare professionals.","features":["Clinical risk calculators","Medication & investigation references","Assessment and handoff tools"],"url":"https://www.bayan.edu.om/preop","cta":"Explore PreOp","states":["assessment","references"],"labels":["Assessment","References"]},
+  {"id":"journalready","name":"JournalReady","category":"Research","number":"04","subtitle":"From research idea to submission","question":"How can researchers work more clearly with evidence?","description":"Support the work around your research: study planning, statistical interpretation, manuscript preparation, and journal selection.","features":["Study design & analysis tools","Manuscript and reference support","Journal selection & submission"],"url":"https://journalready.ai/","cta":"Explore JournalReady","states":["study","manuscript"],"labels":["Study plan","Manuscript"]},
+  {"id":"smartrota","name":"SmartRota","category":"Clinical practice","number":"05","subtitle":"Residency rotation planning","question":"How can rotation planning reflect training needs?","description":"Organize rotations around training requirements, hospital sites, and scheduling constraints.","features":["Rotation planning","Training requirements","Multiple hospital sites"],"url":"https://rota.medresearch-academy.om/","cta":"Sign in to SmartRota","states":["planner","placement"],"labels":["Rotations","Placement"]},
+  {"id":"ohealth","name":"OHealth","category":"Intelligence","number":"06","subtitle":"Health data for better questions","question":"What can open data reveal about health systems?","description":"Explore health-system data, capacity, and trends to support analysis and planning in Oman.","features":["Health-system indicators","Capacity & trend exploration","National open data"],"url":"https://ohealth.medresearch-academy.om/","cta":"Explore OHealth","states":["indicators","trend"],"labels":["Indicators","Trends"]},
+  {"id":"olearn","name":"OLearn","category":"Intelligence","number":"07","subtitle":"Education data in context","question":"How can education data inform better questions?","description":"Explore education trends, geographic patterns, and workforce indicators to inform planning and research.","features":["Education trends","Geographic insights","Workforce indicators"],"url":"https://olearn-sandy.vercel.app/","cta":"Explore OLearn","states":["education","workforce"],"labels":["Education","Workforce"]}
+]
+</script>
+</body>
 </html>
