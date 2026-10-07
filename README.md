@@ -10,6 +10,7 @@ opening film and interactive product demos. Deployed to <https://bayanai.tech>.
 | `index.html` | Page content, navigation, and the `#app-data` JSON that drives the product demos |
 | `style.css` | All styles |
 | `app.js` | Scroll-driven film sequence, demo panels, navigation |
+| `bayan-chat.js` | "Ask Bayan AI" chat assistant: pre-written English/Arabic answers, no AI or server |
 | `assets/videos/scrub/` | Opening film clips, seeked by scroll position on desktop |
 | `assets/videos/m/hero.mp4` | Single autoplay opening clip used on phones |
 | `assets/scenes/posters/` | First/last frames shown before and after the film |
@@ -28,6 +29,20 @@ npx serve -l 8080
 ```
 
 Then open <http://localhost:8080>.
+
+## Chat answers
+
+The chat assistant answers from the `RULES` list near the top of `bayan-chat.js`.
+Each rule has trigger words (`strong` scores 3 points, `words` 1 point) and an
+`en` and an `ar` reply; the highest-scoring rule answers, otherwise `FALLBACK`.
+Replies support `**bold**`, `- ` lists, `[text](https://…)` links and, each on
+its own line, `[[product:medad]]` (a solution card), `[[suggest:A question]]`
+(a follow-up button) and `[[collaborate]]` (the collaboration form, which opens
+a pre-filled email to info@bayanai.tech).
+
+To check which rule answers a question, run `BayanChat.test('your question')` in
+the browser console. The welcome text and starter questions are `introRules` and
+`startersRules` in the `T` object.
 
 ## Deployment
 
