@@ -310,11 +310,19 @@ p { color: var(--muted); }
 .contact-cards h3 { margin-top: 0; font-size: 21px; display: flex; justify-content: space-between; gap: 12px; }
 .email-link { font-size: clamp(26px, 4vw, 56px); display: inline-flex; gap: 40px; align-items: center; margin-top: 65px; letter-spacing: -0.04em; border-bottom: 1px solid #b2bdc4; }
 .email-link span { color: var(--gold); }
+.phone-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.phone-links .button { gap: 10px; }
+.phone-links .button.light { border-color: var(--line); }
+.phone-links svg { width: 18px; height: 18px; flex: none; }
 footer { padding: 50px 6% 30px max(10.5%, 85px); }
 .footer-top { display: flex; justify-content: space-between; gap: 25px; align-items: center; }
 .footer-top .brand { font-size: 19px; }
 .footer-top .brand small { font-size: 12px; letter-spacing: 0; font-weight: 400; color: var(--muted); }
 .footer-top > a:last-child { font-size: 13px; }
+.footer-contact { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-left: auto; font-size: 13px; }
+.footer-contact a { display: inline-flex; align-items: center; gap: 8px; }
+.footer-contact a:hover { color: var(--gold); }
+.footer-contact svg { width: 15px; height: 15px; flex: none; }
 .footer-bottom { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 40px; display: flex; justify-content: space-between; font-size: 12px; color: #7c8891; }
 
 /* ---------- dialog ---------- */
@@ -499,6 +507,7 @@ footer { padding: 50px 6% 30px max(10.5%, 85px); }
   footer { padding: 40px 24px 25px; }
   .footer-top { align-items: flex-start; flex-direction: column; }
   .footer-top .brand { font-size: 17px; }
+  .footer-contact { margin-left: 0; }
   .footer-bottom { gap: 15px; flex-wrap: wrap; }
   .demo-dialog { width: 94vw; padding: 19px; border-radius: 16px; }
   .dialog-screen { max-width: 340px; }
