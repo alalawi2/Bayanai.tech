@@ -528,7 +528,7 @@
     '.bc-lang[lang=ar]{font-family:var(--bc-font-ar)}',
     '.bc-lang[lang=en]{font-family:var(--bc-font)}',
     '.bc-lang:hover{background:var(--bc-soft)}',
-    '.bc-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:20px;scrollbar-width:thin}',
+    '.bc-body{flex:1;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;padding:20px;scrollbar-width:thin}',
     '.bc-body:focus{outline:none}',
 
     /* welcome */
@@ -602,7 +602,7 @@
     '.bc-field input{width:100%;height:38px;padding:0 12px;border:1px solid var(--bc-line-2);border-radius:8px;background:#fff;font-size:14px;line-height:normal;outline:none}',
     '.bc-field input:focus{border-color:var(--bc-primary);box-shadow:0 0 0 3px rgba(11,26,40,.10)}',
     '.bc-field input::placeholder,.bc-input::placeholder{color:var(--bc-ink-3);opacity:1}',
-    '.bc-hp{position:absolute;left:-10000px;width:1px;height:1px;opacity:0}',
+    '.bc-hp{position:absolute;top:0;inset-inline-start:0;width:1px;height:1px;padding:0;border:0;opacity:0;pointer-events:none}',
     '.bc-form-msg{margin:-4px 0 0;font-size:12.5px;line-height:18px;color:#8A1C1C}',
     '.bc-submit{height:40px;border:0;border-radius:10px;background:var(--bc-primary);color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}',
     '.bc-submit[disabled]{opacity:.7;cursor:default}',
