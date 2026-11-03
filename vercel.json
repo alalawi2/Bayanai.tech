@@ -8,21 +8,71 @@
     {
       "source": "/assets/videos/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
-        { "key": "Accept-Ranges", "value": "bytes" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "bytes"
+        }
       ]
     },
     {
       "source": "/assets/(scenes|screens|logos)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(index.html)?",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/solutions",
+      "destination": "/solutions/index.html"
+    },
+    {
+      "source": "/solutions/bayan",
+      "destination": "/solutions/bayan/index.html"
+    },
+    {
+      "source": "/solutions/medad",
+      "destination": "/solutions/medad/index.html"
+    },
+    {
+      "source": "/solutions/preop",
+      "destination": "/solutions/preop/index.html"
+    },
+    {
+      "source": "/solutions/journalready",
+      "destination": "/solutions/journalready/index.html"
+    },
+    {
+      "source": "/solutions/smartrota",
+      "destination": "/solutions/smartrota/index.html"
+    },
+    {
+      "source": "/solutions/ohealth",
+      "destination": "/solutions/ohealth/index.html"
+    },
+    {
+      "source": "/solutions/olearn",
+      "destination": "/solutions/olearn/index.html"
+    },
+    {
+      "source": "/solutions/wardwise",
+      "destination": "/solutions/wardwise/index.html"
     }
   ]
 }
