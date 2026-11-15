@@ -1,6 +1,6 @@
 /* Bayan AI — opening film, chapters and demos.
-   Opening: the film (globe → map → coast) plays once and holds its last
-   frame, in a landscape cut on desktop and a portrait one on phones. Chapters: each app's
+   Opening: a still of the globe on desktop; on phones the film plays once
+   and holds its last frame. Chapters: each app's
    screenshot sits inside an illustrated laptop (desktop) or phone (mobile);
    tabs cross-fade between states and the card opens the full-size demo. */
 (() => {
@@ -70,9 +70,8 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Opening film: one clip plays once and holds its last frame. Desktop  */
-  /* gets the landscape cut (scripts/build-desktop-film.sh), phones the   */
-  /* portrait one. It plays while the opening is on screen.               */
+  /* Opening film (phones only; desktop shows a still): the clip plays   */
+  /* once while the opening is on screen and holds its last frame.        */
   /* ------------------------------------------------------------------ */
   const hero = {
     film: $("#top .film"),
@@ -88,10 +87,18 @@
     v.playsInline = true;
     v.loop = false;
     v.preload = "none";
-    v.poster = v.dataset[mode + "Poster"];
-    v.src = v.dataset[mode];
+    v.poster = v.dataset.poster;
+    v.src = v.dataset.src;
     hero.state = "idle";
     if (motionPaused) heroFinish(true);
+  }
+  function heroLeave() {
+    // Desktop shows the still; drop the clip so nothing downloads.
+    const v = hero.video;
+    v.pause();
+    v.removeAttribute("poster");
+    if (v.getAttribute("src")) { v.removeAttribute("src"); v.load(); }
+    hero.state = "idle";
   }
   function heroPrepare() {
     if (hero.state !== "idle") return;
@@ -117,7 +124,7 @@
     const v = hero.video;
     if (stopNow) {
       v.pause();
-      v.poster = v.dataset[mode + "End"];
+      v.poster = v.dataset.end;
       if (!v.currentTime) { v.removeAttribute("preload"); v.load(); }
     }
     hero.state = "ended";
@@ -152,21 +159,22 @@
     if (next === mode) return;
     mode = next;
     if (playObserver) { playObserver.disconnect(); prepareObserver.disconnect(); playObserver = prepareObserver = null; }
-    heroEnter();
-    prepareObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) heroPrepare(); });
-    }, { rootMargin: "120% 0px" });
-    playObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e) => (e.intersectionRatio >= 0.45 ? heroPlay() : heroPause()));
-    }, { threshold: [0, 0.45, 1] });
-    prepareObserver.observe(hero.film);
-    playObserver.observe(hero.film);
     if (mode === "mobile") {
+      heroEnter();
+      prepareObserver = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) heroPrepare(); });
+      }, { rootMargin: "120% 0px" });
+      playObserver = new IntersectionObserver((entries) => {
+        entries.forEach((e) => (e.intersectionRatio >= 0.45 ? heroPlay() : heroPause()));
+      }, { threshold: [0, 0.45, 1] });
+      prepareObserver.observe(hero.film);
+      playObserver.observe(hero.film);
       resetFilter();
       placeChapters(true);
       const openFolder = $(".folder[open]");
       if (openFolder) $$(".app-chapter", openFolder).forEach((s) => preloadShots(appMap.get(s.dataset.app), "mobile"));
     } else {
+      heroLeave();
       placeChapters(false);
       chapters.forEach((s) => preloadShots(appMap.get(s.dataset.app), "desktop"));
     }

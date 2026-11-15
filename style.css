@@ -107,7 +107,8 @@ p { color: var(--muted); }
    ========================================================================= */
 .hero-journey { position: relative; height: 100svh; min-height: 560px; background: var(--night); }
 .hero-journey .film { position: absolute; inset: 0; overflow: hidden; background: var(--night); }
-.hero-film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-still img, .hero-film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-film { display: none; }
 .hero { position: absolute; inset: 0; z-index: 1; color: #fff; pointer-events: none; }
 .hero > * { pointer-events: auto; }
 .hero-copy { position: absolute; left: 10.5%; top: 21svh; max-width: 780px; text-shadow: 0 2px 28px rgba(4, 12, 22, 0.55); }
@@ -352,6 +353,8 @@ footer { padding: 50px 6% 30px max(10.5%, 85px); }
   .side-rail { display: none; }
 
   /* opening film: the portrait clip plays once, edge to edge */
+  .hero-still { display: none; }
+  .hero-journey .hero-film { display: block; }
   .hero-journey { height: auto; min-height: 0; background: #fff; }
   .hero-journey .film {
     position: relative; inset: auto; width: 100%; height: 100svh; min-height: 540px; aspect-ratio: auto;

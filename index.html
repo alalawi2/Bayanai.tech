@@ -51,16 +51,16 @@
   <!-- ============ OPENING: globe → Oman → coast → the laptop opens ============ -->
   <section class="hero-journey" id="top">
     <div class="film">
-      <!-- The opening film plays once and holds its last frame. app.js picks the
-           landscape (desktop) or portrait (phone) cut. -->
+      <!-- Desktop: a still of the globe. Phones skip it (blank source) and play
+           the portrait film once instead; it holds its last frame. -->
+      <picture class="hero-still">
+        <source media="(max-width: 760px), ((max-width: 1100px) and (orientation: portrait))" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAACH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="assets/scenes/posters/opening-start.jpg" alt="" fetchpriority="high">
+      </picture>
       <video class="hero-film" muted playsinline preload="none" aria-hidden="true"
-             poster="assets/scenes/posters/opening-start.jpg"
-             data-desktop="assets/videos/d/hero.mp4?v=20261115a"
-             data-desktop-poster="assets/scenes/posters/opening-start.jpg"
-             data-desktop-end="assets/scenes/posters/opening-end.jpg"
-             data-mobile="assets/videos/m/hero.mp4?v=20260921e"
-             data-mobile-poster="assets/scenes/posters/opening-mobile-start.jpg"
-             data-mobile-end="assets/scenes/posters/opening-mobile-end.jpg"></video>
+             data-poster="assets/scenes/posters/opening-mobile-start.jpg"
+             data-src="assets/videos/m/hero.mp4?v=20260921e"
+             data-end="assets/scenes/posters/opening-mobile-end.jpg"></video>
     </div>
 
     <div class="hero">
