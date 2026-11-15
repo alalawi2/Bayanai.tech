@@ -49,19 +49,18 @@
 <main id="main">
 
   <!-- ============ OPENING: globe → Oman → coast → the laptop opens ============ -->
-  <section class="hero-journey scroll-scene" id="top"
-           data-clips="01-world,02-descent,03-coast-cut" data-clip-seconds="6.0417,6.0417,4.2083"
-           data-phases="0,0.9,0.9,1">
+  <section class="hero-journey" id="top">
     <div class="film">
-      <div class="film-frame">
-        <div class="video-sequence">
-          <img class="sequence-poster" src="assets/scenes/posters/opening-start.jpg" alt="" fetchpriority="high">
-          <video class="sequence-video" muted playsinline preload="none" aria-hidden="true"></video>
-          <video class="sequence-video" muted playsinline preload="none" aria-hidden="true"></video>
-        </div>
-      </div>
-      <!-- Phones: the portrait film simply plays once. -->
-      <video class="mobile-film" src="assets/videos/m/hero.mp4?v=20260921e" muted playsinline preload="none" poster="assets/scenes/posters/opening-mobile-start.jpg" aria-hidden="true"></video>
+      <!-- The opening film plays once and holds its last frame. app.js picks the
+           landscape (desktop) or portrait (phone) cut. -->
+      <video class="hero-film" muted playsinline preload="none" aria-hidden="true"
+             poster="assets/scenes/posters/opening-start.jpg"
+             data-desktop="assets/videos/d/hero.mp4?v=20261115a"
+             data-desktop-poster="assets/scenes/posters/opening-start.jpg"
+             data-desktop-end="assets/scenes/posters/opening-end.jpg"
+             data-mobile="assets/videos/m/hero.mp4?v=20260921e"
+             data-mobile-poster="assets/scenes/posters/opening-mobile-start.jpg"
+             data-mobile-end="assets/scenes/posters/opening-mobile-end.jpg"></video>
     </div>
 
     <div class="hero">
@@ -74,18 +73,11 @@
           <a class="text-link" href="#research">Our research <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.6 9.4 9.4 2.6M4.2 2.6h5.2v5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-      <div class="journey-note" aria-hidden="true">
-        <span class="eyebrow">ONE CONNECTED ECOSYSTEM</span>
-        <h3>Different questions.<br>Shared purpose.</h3>
-        <p>Eight initiatives across learning, clinical practice, research, and open data.</p>
-        <div class="note-route"><i></i><span>Oman</span><span>Bayan</span><span>Medad</span></div>
-      </div>
       <div class="hero-bottom">
         <span>Healthcare · Education · Research</span>
         <span lang="ar" dir="rtl">من عُمان، للمستقبل</span>
         <a href="#ecosystem">Scroll to discover <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.8v8.4M2.6 6.8 6 10.2l3.4-3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="motion-progress" aria-hidden="true"><i></i></div>
       <div class="film-title">
         <p class="eyebrow">SCIENCE &amp; INNOVATION FROM OMAN</p>
         <h1>Where Medicine<br>Meets <em>Intelligence.</em></h1>

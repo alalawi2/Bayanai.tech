@@ -9,9 +9,10 @@ opening film and interactive product demos. Deployed to <https://bayanai.tech>.
 | --- | --- |
 | `index.html` | Page content, navigation, and the `#app-data` JSON that drives the product demos |
 | `style.css` | All styles |
-| `app.js` | Scroll-driven film sequence, demo panels, navigation |
+| `app.js` | Opening film playback, demo panels, navigation |
 | `bayan-chat.js` | "Ask Bayan AI" chat assistant: pre-written English/Arabic answers, no AI or server |
-| `assets/videos/scrub/` | Opening film clips, seeked by scroll position on desktop |
+| `assets/videos/d/hero.mp4` | Landscape opening film that plays once on desktop |
+| `assets/videos/scrub/` | Source clips for the desktop film (rebuild with `scripts/build-desktop-film.sh`) |
 | `assets/videos/m/hero.mp4` | Single autoplay opening clip used on phones |
 | `assets/scenes/posters/` | First/last frames shown before and after the film |
 | `assets/screens/` | Product demo screenshots (`<app>-<step>-<state>-<desktop\|mobile>.png`) |

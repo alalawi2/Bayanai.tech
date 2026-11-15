@@ -103,61 +103,24 @@ p { color: var(--muted); }
 .side-rail.on-light .rail-caption { color: #849099; }
 
 /* =========================================================================
-   OPENING FILM (desktop): a fixed layer clipped to its section
+   OPENING FILM: one screen; the clip plays once and holds its last frame
    ========================================================================= */
-.scroll-scene {
-  position: relative;
-  clip-path: inset(0);
-  background: var(--night);
-  scroll-margin-top: -110px;
-}
-.scroll-scene .film {
-  position: fixed; inset: 0; z-index: 0;
-  overflow: hidden; background: var(--night);
-  visibility: hidden;
-}
-.scroll-scene.film-live .film { visibility: visible; }
-.film-frame {
-  position: absolute; left: 0; top: 0; z-index: 0;
-  width: max(100vw, calc(100svh * 1.774074));
-  aspect-ratio: 1916 / 1080;
-  transform-origin: 0 0;
-  will-change: transform;
-  isolation: isolate;
-}
-.video-sequence { position: absolute; inset: 0; overflow: hidden; }
-.video-sequence img, .video-sequence video {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: fill; display: block;
-}
-.sequence-video { opacity: 0; }
-.sequence-poster { transition: opacity 0.2s; }
-.sequence-poster.covered { opacity: 0; }
-.hero-journey { height: 270svh; }
-.hero { position: sticky; top: 0; height: 100svh; z-index: 1; color: #fff; pointer-events: none; }
+.hero-journey { position: relative; height: 100svh; min-height: 560px; background: var(--night); }
+.hero-journey .film { position: absolute; inset: 0; overflow: hidden; background: var(--night); }
+.hero-film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero { position: absolute; inset: 0; z-index: 1; color: #fff; pointer-events: none; }
 .hero > * { pointer-events: auto; }
-.hero-copy { position: absolute; left: 10.5%; top: 21svh; max-width: 780px; will-change: transform, opacity; text-shadow: 0 2px 28px rgba(4, 12, 22, 0.55); }
+.hero-copy { position: absolute; left: 10.5%; top: 21svh; max-width: 780px; text-shadow: 0 2px 28px rgba(4, 12, 22, 0.55); }
 .hero-copy .eyebrow { color: #dce7ee; margin-bottom: 26px; }
 .hero-copy h1 { font-size: clamp(50px, 5.9vw, 94px); }
 .hero-intro { color: #d6dee4; max-width: 520px; font-size: 17px; line-height: 1.8; margin-top: 28px; }
-.journey-note {
-  position: absolute; left: 10.5%; bottom: 17%; width: 340px; padding: 28px 30px;
-  background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(14px); border-radius: 20px;
-  color: var(--ink); opacity: 0; box-shadow: 0 20px 80px #00000013; pointer-events: none !important;
-}
-.journey-note h3 { font-size: 29px; margin: 15px 0; }
-.journey-note p { font-size: 14px; line-height: 1.7; }
-.note-route { display: flex; justify-content: space-between; position: relative; padding-top: 25px; margin-top: 16px; font-size: 12px; color: var(--muted); }
-.note-route i { height: 1px; background: #bacbd7; position: absolute; top: 8px; left: 0; right: 0; }
 .hero-bottom {
   position: absolute; left: 10.5%; right: 6%; bottom: 34px;
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   font-size: 12px; letter-spacing: 0.04em; color: #d6dee4; text-shadow: 0 1px 18px rgba(4, 12, 22, 0.6);
 }
 .hero-bottom [lang="ar"] { font-family: "IBM Plex Sans Arabic", sans-serif; font-size: 18px; }
-.motion-progress { position: absolute; bottom: 0; height: 2px; left: 0; right: 0; background: #ffffff20; pointer-events: none !important; }
-.motion-progress i { display: block; width: 100%; height: 100%; background: #a7bfce; transform: scaleX(0); transform-origin: left; }
-.film-title, .mobile-film { display: none; }
+.film-title { display: none; }
 
 /* =========================================================================
    CHAPTERS — copy beside an illustrated laptop showing the app
@@ -389,16 +352,13 @@ footer { padding: 50px 6% 30px max(10.5%, 85px); }
   .side-rail { display: none; }
 
   /* opening film: the portrait clip plays once, edge to edge */
-  .scroll-scene { clip-path: none; background: #fff; scroll-margin-top: 0; }
-  .scroll-scene .film {
+  .hero-journey { height: auto; min-height: 0; background: #fff; }
+  .hero-journey .film {
     position: relative; inset: auto; width: 100%; height: 100svh; min-height: 540px; aspect-ratio: auto;
     visibility: visible; overflow: hidden; background: #050a12;
   }
-  .film-frame { display: none; }
-  .mobile-film { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .hero-journey { height: auto; }
   .hero { position: absolute; left: 0; top: 0; width: 100%; height: 100%; aspect-ratio: auto; }
-  .hero-copy, .journey-note, .hero-bottom, .motion-progress { display: none; }
+  .hero-copy, .hero-bottom { display: none; }
   /* title and description centred on the film; the actions rest near its bottom edge */
   .film-title {
     display: flex; flex-direction: column; justify-content: center;
