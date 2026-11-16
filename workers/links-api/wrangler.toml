@@ -1,0 +1,20 @@
+name = "bayan-links-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Plain (non-secret) settings
+[vars]
+ALLOWED_ORIGINS = "https://www.bayanai.tech,https://bayanai.tech"
+MAIL_FROM = "Bayan AI Links <onboarding@resend.dev>"
+
+# Create with:  npx wrangler d1 create bayan-links   then paste the id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "bayan-links"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# Secrets (never committed, never sent to the browser) — set with `npx wrangler secret put <NAME>`:
+#   NOTIFY_EMAIL      where new messages are emailed
+#   RESEND_API_KEY    API key from resend.com
+#   TURNSTILE_SECRET  Turnstile widget secret key
+#   IP_SALT           any long random string (used to hash IPs for rate limiting)

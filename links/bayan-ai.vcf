@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Bayan AI Technologies;;;;
+FN:Bayan AI Technologies
+ORG:Bayan AI Technologies LLC
+TEL;TYPE=WORK,VOICE:+968 7225 1059
+EMAIL;TYPE=WORK:info@bayanai.tech
+URL:https://www.bayanai.tech/
+ADR;TYPE=WORK:;Office 44;Authority for SME Development;Muscat;;;Oman
+NOTE:Where Medicine Meets Intelligence.
+X-ABShowAs:COMPANY
+END:VCARD

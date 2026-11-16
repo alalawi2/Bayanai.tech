@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npx wrangler dev` (never commit .dev.vars).
+ALLOWED_ORIGINS=http://localhost:8080,http://127.0.0.1:8080
+NOTIFY_EMAIL=you@example.com
+RESEND_API_KEY=
+# Turnstile test secret that always passes: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+IP_SALT=dev-salt

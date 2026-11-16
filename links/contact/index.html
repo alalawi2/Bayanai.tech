@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="title_contact">Contact us | Bayan AI Technologies</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0b1a28">
+  <link rel="icon" href="/assets/logos/bayan-ai-mark-white.png">
+  <link rel="stylesheet" href="/links/links.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="back" href="/links"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg><span data-i18n="back">Back</span></a>
+      <button class="lang-toggle" type="button" lang="ar">عربي</button>
+    </div>
+
+    <main>
+      <header class="page-head">
+        <p class="eyebrow" data-i18n="get_in_touch">Get in touch</p>
+        <h1 data-i18n="contact_h1">Contact us</h1>
+        <p data-i18n="contact_p">Leave your details and a short message. Our team will get back to you.</p>
+      </header>
+
+      <form id="contact-form" class="panel form" novalidate>
+        <div class="field">
+          <label for="f-name" data-i18n="f_name">Full name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+        </div>
+        <div class="field">
+          <label for="f-email" data-i18n="f_email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" required>
+        </div>
+        <div class="field">
+          <label for="f-phone"><span data-i18n="f_phone">Phone / WhatsApp</span> <span class="opt" data-i18n="opt">(optional)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40">
+        </div>
+        <div class="field">
+          <label for="f-org"><span data-i18n="f_org">Organisation</span> <span class="opt" data-i18n="opt">(optional)</span></label>
+          <input id="f-org" name="organisation" type="text" autocomplete="organization" maxlength="160">
+        </div>
+        <div class="field">
+          <label for="f-topic" data-i18n="f_topic">Topic</label>
+          <select id="f-topic" name="topic">
+            <option value="general" data-i18n="t_general">General enquiry</option>
+            <option value="partnership" data-i18n="t_partner">Partnership or collaboration</option>
+            <option value="demo" data-i18n="t_demo">Product demo</option>
+            <option value="research" data-i18n="t_research">Research</option>
+            <option value="other" data-i18n="t_other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-message" data-i18n="f_message">Message</label>
+          <textarea id="f-message" name="message" maxlength="4000" required></textarea>
+        </div>
+
+        <!-- Honeypot: real people never see or fill this. -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div id="turnstile" class="turnstile"></div>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        <button class="btn primary" type="submit" data-i18n="send">Send message</button>
+        <p class="note" data-i18n="privacy">We only use your details to reply to you.</p>
+      </form>
+
+      <section id="form-done" class="panel done" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>
+        <h2 tabindex="-1" data-i18n="done_h">Thank you!</h2>
+        <p data-i18n="done_p">Your message has been sent. We'll be in touch soon.</p>
+        <div class="actions">
+          <a class="btn" href="/links" data-i18n="home">Back to home</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot" data-i18n="foot">© 2026 Bayan AI Technologies LLC · Muscat, Oman</footer>
+  </div>
+  <script src="/links/links.js" defer></script>
+</body>
+</html>

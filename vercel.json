@@ -35,6 +35,28 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/links(/.*)?",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/links/bayan-ai.vcf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/vcard; charset=utf-8"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"Bayan-AI.vcf\""
+        }
+      ]
     }
   ],
   "rewrites": [
@@ -73,6 +95,22 @@
     {
       "source": "/solutions/wardwise",
       "destination": "/solutions/wardwise/index.html"
+    },
+    {
+      "source": "/links",
+      "destination": "/links/index.html"
+    },
+    {
+      "source": "/links/about",
+      "destination": "/links/about/index.html"
+    },
+    {
+      "source": "/links/contact",
+      "destination": "/links/contact/index.html"
+    },
+    {
+      "source": "/links/socials",
+      "destination": "/links/socials/index.html"
     }
   ]
 }

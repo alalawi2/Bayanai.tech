@@ -1,0 +1,2 @@
+# Cloudflare Worker source is deployed with wrangler, not served by Vercel
+workers/
