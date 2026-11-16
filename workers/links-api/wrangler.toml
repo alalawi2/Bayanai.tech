@@ -11,7 +11,7 @@ MAIL_FROM = "Bayan AI Links <onboarding@resend.dev>"
 [[d1_databases]]
 binding = "DB"
 database_name = "bayan-links"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "c159d93a-9625-4995-9512-970422ccf291"
 
 # Secrets (never committed, never sent to the browser) — set with `npx wrangler secret put <NAME>`:
 #   NOTIFY_EMAIL      where new messages are emailed

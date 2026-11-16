@@ -7,9 +7,9 @@
   var CONFIG = {
     // Cloudflare Worker that stores + emails contact messages (workers/links-api).
     // Leave empty until deployed: the form then falls back to opening an email.
-    WORKER_URL: '',
+    WORKER_URL: 'https://bayan-links-api.smartblock.workers.dev',
     // Cloudflare Turnstile site key (public). Empty = no widget.
-    TURNSTILE_SITEKEY: '',
+    TURNSTILE_SITEKEY: '0x4AAAAAAGD9gjPpb7IMB5yd',
     FALLBACK_EMAIL: 'info@bayanai.tech',
 
     LINKS: {
